@@ -1,0 +1,34 @@
+{
+  "gnsgSchoolApp": {
+    "student": {
+      "home": {
+        "title": "Students",
+        "createLabel": "Create a new Student",
+        "createOrEditLabel": "Create or edit a Student",
+        "search": "Search for Student",
+        "notFound": "No Students found"
+      },
+      "created": "A new Student is created with identifier {{ param }}",
+      "updated": "A Student is updated with identifier {{ param }}",
+      "deleted": "A Student is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Student {{ id }}?"
+      },
+      "detail": {
+        "title": "Student"
+      },
+      "fullName": "Full Name",
+      "parentName": "Parent Name",
+      "address": "Address",
+      "city": "City",
+      "stateProvince": "State Province",
+      "postalCode": "Postal Code",
+      "email": "Email",
+      "phoneNumber": "Phone Number",
+      "teacherName": "Teacher Name",
+      "active": "Active",
+      "charge": "Charge",
+      "charge": "Charge"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="appliedCharge">
+            <h2><span jhiTranslate="gnsgSchoolApp.appliedCharge.detail.title">Applied Charge</span> {{ appliedCharge.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gnsgSchoolApp.appliedCharge.type">Type</span></dt>
+                <dd>
+                    <span>{{ appliedCharge.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.appliedCharge.ammount">Ammount</span></dt>
+                <dd>
+                    <span>{{ appliedCharge.ammount }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.appliedCharge.dueInterval">Due Interval</span></dt>
+                <dd>
+                    <span>{{ appliedCharge.dueInterval }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/applied-charge', appliedCharge.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
