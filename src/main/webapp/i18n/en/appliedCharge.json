@@ -1,0 +1,26 @@
+{
+  "gnsgSchoolApp": {
+    "appliedCharge": {
+      "home": {
+        "title": "Applied Charges",
+        "createLabel": "Create a new Applied Charge",
+        "createOrEditLabel": "Create or edit a Applied Charge",
+        "search": "Search for Applied Charge",
+        "notFound": "No Applied Charges found"
+      },
+      "created": "A new Applied Charge is created with identifier {{ param }}",
+      "updated": "A Applied Charge is updated with identifier {{ param }}",
+      "deleted": "A Applied Charge is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Applied Charge {{ id }}?"
+      },
+      "detail": {
+        "title": "Applied Charge"
+      },
+      "type": "Type",
+      "ammount": "Ammount",
+      "dueInterval": "Due Interval",
+      "student": "Student"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gnsgSchoolApp": {
+    "charge": {
+      "home": {
+        "title": "Charges",
+        "createLabel": "Create a new Charge",
+        "createOrEditLabel": "Create or edit a Charge",
+        "search": "Search for Charge",
+        "notFound": "No Charges found"
+      },
+      "created": "A new Charge is created with identifier {{ param }}",
+      "updated": "A Charge is updated with identifier {{ param }}",
+      "deleted": "A Charge is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Charge {{ id }}?"
+      },
+      "detail": {
+        "title": "Charge"
+      },
+      "name": "Name",
+      "ammount": "Ammount",
+      "dueDate": "Due Date",
+      "paymentDate": "Payment Date",
+      "ammountPaid": "Ammount Paid",
+      "ref": "Ref",
+      "student": "Student"
+    }
+  }
+}

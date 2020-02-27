@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="charge">
+            <h2><span jhiTranslate="gnsgSchoolApp.charge.detail.title">Charge</span> {{ charge.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gnsgSchoolApp.charge.name">Name</span></dt>
+                <dd>
+                    <span>{{ charge.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.charge.ammount">Ammount</span></dt>
+                <dd>
+                    <span>{{ charge.ammount }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.charge.dueDate">Due Date</span></dt>
+                <dd>
+                    <span>{{ charge.dueDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.charge.paymentDate">Payment Date</span></dt>
+                <dd>
+                    <span>{{ charge.paymentDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.charge.ammountPaid">Ammount Paid</span></dt>
+                <dd>
+                    <span>{{ charge.ammountPaid }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.charge.ref">Ref</span></dt>
+                <dd>
+                    <span>{{ charge.ref }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.charge.student">Student</span></dt>
+                <dd>
+                    <div *ngIf="charge.student">
+                        <a [routerLink]="['/student', charge.student?.id, 'view']">{{ charge.student?.fullName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/charge', charge.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
