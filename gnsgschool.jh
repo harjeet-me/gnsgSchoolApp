@@ -1,0 +1,69 @@
+
+
+entity Student {
+    
+	fullName String,
+    parentName String,
+    address String,
+    city String,
+	stateProvince String,
+   	postalCode String ,
+    email String, 
+ 	phoneNumber Long,
+    teacherName String ,
+    active Boolean
+   
+   }
+ entity Charge {
+    name String,
+    ammount Double,
+    dueDate LocalDate,
+    paymentDate LocalDate,
+    ammountPaid Double,
+    ref String
+   }
+ entity AppliedCharge {
+    type String,
+    ammount Double,
+    dueInterval Integer
+   
+   }
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+    
+	Student {charge(name)} to Charge {student(fullName)}
+    
+   }
+//relationship ManyToOne {
+
+// }
+relationship ManyToMany {
+  Student { charge(type) }  to  AppliedCharge 
+}
+
+
+// relationship OneToMany {
+  
+  //  BookingItem {equipment(number)}   to Equipment,
+   // BookingItem {driver(firstName)}   to  Driver{bookingItem(description)}
+	
+// }
+//relationship ManyToOne {
+//  Invoice{invoiceTo} to Customer
+// }
+
+
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+paginate  Student  with pagination
+
+// Use Data Transfert Objects (DTO)
+ // dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
