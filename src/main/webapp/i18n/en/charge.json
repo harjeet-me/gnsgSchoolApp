@@ -18,11 +18,11 @@
         "title": "Charge"
       },
       "name": "Name",
-      "ammount": "Ammount",
+      "amt": "Amt",
       "month": "Month",
       "dueDate": "Due Date",
       "paymentDate": "Payment Date",
-      "ammountPaid": "Ammount Paid",
+      "amtPaid": "Amt Paid",
       "ref": "Ref",
       "student": "Student"
     }

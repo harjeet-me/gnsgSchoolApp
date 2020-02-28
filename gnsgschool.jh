@@ -14,11 +14,11 @@ entity Student {
    }
  entity Charge {
     name String,
-    ammount Double,
+    amt Double,
     month String,
     dueDate LocalDate,
     paymentDate LocalDate,
-    ammountPaid Double,
+    amtPaid Double,
     ref String
    }
  entity AppliedCharge {

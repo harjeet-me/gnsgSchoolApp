@@ -43,8 +43,8 @@ public class ChargeResourceIT {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final Double DEFAULT_AMMOUNT = 1D;
-    private static final Double UPDATED_AMMOUNT = 2D;
+    private static final Double DEFAULT_AMT = 1D;
+    private static final Double UPDATED_AMT = 2D;
 
     private static final String DEFAULT_MONTH = "AAAAAAAAAA";
     private static final String UPDATED_MONTH = "BBBBBBBBBB";
@@ -55,8 +55,8 @@ public class ChargeResourceIT {
     private static final LocalDate DEFAULT_PAYMENT_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_PAYMENT_DATE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Double DEFAULT_AMMOUNT_PAID = 1D;
-    private static final Double UPDATED_AMMOUNT_PAID = 2D;
+    private static final Double DEFAULT_AMT_PAID = 1D;
+    private static final Double UPDATED_AMT_PAID = 2D;
 
     private static final String DEFAULT_REF = "AAAAAAAAAA";
     private static final String UPDATED_REF = "BBBBBBBBBB";
@@ -115,11 +115,11 @@ public class ChargeResourceIT {
     public static Charge createEntity(EntityManager em) {
         Charge charge = new Charge()
             .name(DEFAULT_NAME)
-            .ammount(DEFAULT_AMMOUNT)
+            .amt(DEFAULT_AMT)
             .month(DEFAULT_MONTH)
             .dueDate(DEFAULT_DUE_DATE)
             .paymentDate(DEFAULT_PAYMENT_DATE)
-            .ammountPaid(DEFAULT_AMMOUNT_PAID)
+            .amtPaid(DEFAULT_AMT_PAID)
             .ref(DEFAULT_REF);
         return charge;
     }
@@ -132,11 +132,11 @@ public class ChargeResourceIT {
     public static Charge createUpdatedEntity(EntityManager em) {
         Charge charge = new Charge()
             .name(UPDATED_NAME)
-            .ammount(UPDATED_AMMOUNT)
+            .amt(UPDATED_AMT)
             .month(UPDATED_MONTH)
             .dueDate(UPDATED_DUE_DATE)
             .paymentDate(UPDATED_PAYMENT_DATE)
-            .ammountPaid(UPDATED_AMMOUNT_PAID)
+            .amtPaid(UPDATED_AMT_PAID)
             .ref(UPDATED_REF);
         return charge;
     }
@@ -162,11 +162,11 @@ public class ChargeResourceIT {
         assertThat(chargeList).hasSize(databaseSizeBeforeCreate + 1);
         Charge testCharge = chargeList.get(chargeList.size() - 1);
         assertThat(testCharge.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testCharge.getAmmount()).isEqualTo(DEFAULT_AMMOUNT);
+        assertThat(testCharge.getAmt()).isEqualTo(DEFAULT_AMT);
         assertThat(testCharge.getMonth()).isEqualTo(DEFAULT_MONTH);
         assertThat(testCharge.getDueDate()).isEqualTo(DEFAULT_DUE_DATE);
         assertThat(testCharge.getPaymentDate()).isEqualTo(DEFAULT_PAYMENT_DATE);
-        assertThat(testCharge.getAmmountPaid()).isEqualTo(DEFAULT_AMMOUNT_PAID);
+        assertThat(testCharge.getAmtPaid()).isEqualTo(DEFAULT_AMT_PAID);
         assertThat(testCharge.getRef()).isEqualTo(DEFAULT_REF);
 
         // Validate the Charge in Elasticsearch
@@ -208,11 +208,11 @@ public class ChargeResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(charge.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].ammount").value(hasItem(DEFAULT_AMMOUNT.doubleValue())))
+            .andExpect(jsonPath("$.[*].amt").value(hasItem(DEFAULT_AMT.doubleValue())))
             .andExpect(jsonPath("$.[*].month").value(hasItem(DEFAULT_MONTH)))
             .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())))
             .andExpect(jsonPath("$.[*].paymentDate").value(hasItem(DEFAULT_PAYMENT_DATE.toString())))
-            .andExpect(jsonPath("$.[*].ammountPaid").value(hasItem(DEFAULT_AMMOUNT_PAID.doubleValue())))
+            .andExpect(jsonPath("$.[*].amtPaid").value(hasItem(DEFAULT_AMT_PAID.doubleValue())))
             .andExpect(jsonPath("$.[*].ref").value(hasItem(DEFAULT_REF)));
     }
     
@@ -228,11 +228,11 @@ public class ChargeResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(charge.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
-            .andExpect(jsonPath("$.ammount").value(DEFAULT_AMMOUNT.doubleValue()))
+            .andExpect(jsonPath("$.amt").value(DEFAULT_AMT.doubleValue()))
             .andExpect(jsonPath("$.month").value(DEFAULT_MONTH))
             .andExpect(jsonPath("$.dueDate").value(DEFAULT_DUE_DATE.toString()))
             .andExpect(jsonPath("$.paymentDate").value(DEFAULT_PAYMENT_DATE.toString()))
-            .andExpect(jsonPath("$.ammountPaid").value(DEFAULT_AMMOUNT_PAID.doubleValue()))
+            .andExpect(jsonPath("$.amtPaid").value(DEFAULT_AMT_PAID.doubleValue()))
             .andExpect(jsonPath("$.ref").value(DEFAULT_REF));
     }
 
@@ -260,11 +260,11 @@ public class ChargeResourceIT {
         em.detach(updatedCharge);
         updatedCharge
             .name(UPDATED_NAME)
-            .ammount(UPDATED_AMMOUNT)
+            .amt(UPDATED_AMT)
             .month(UPDATED_MONTH)
             .dueDate(UPDATED_DUE_DATE)
             .paymentDate(UPDATED_PAYMENT_DATE)
-            .ammountPaid(UPDATED_AMMOUNT_PAID)
+            .amtPaid(UPDATED_AMT_PAID)
             .ref(UPDATED_REF);
 
         restChargeMockMvc.perform(put("/api/charges")
@@ -277,11 +277,11 @@ public class ChargeResourceIT {
         assertThat(chargeList).hasSize(databaseSizeBeforeUpdate);
         Charge testCharge = chargeList.get(chargeList.size() - 1);
         assertThat(testCharge.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testCharge.getAmmount()).isEqualTo(UPDATED_AMMOUNT);
+        assertThat(testCharge.getAmt()).isEqualTo(UPDATED_AMT);
         assertThat(testCharge.getMonth()).isEqualTo(UPDATED_MONTH);
         assertThat(testCharge.getDueDate()).isEqualTo(UPDATED_DUE_DATE);
         assertThat(testCharge.getPaymentDate()).isEqualTo(UPDATED_PAYMENT_DATE);
-        assertThat(testCharge.getAmmountPaid()).isEqualTo(UPDATED_AMMOUNT_PAID);
+        assertThat(testCharge.getAmtPaid()).isEqualTo(UPDATED_AMT_PAID);
         assertThat(testCharge.getRef()).isEqualTo(UPDATED_REF);
 
         // Validate the Charge in Elasticsearch
@@ -343,11 +343,11 @@ public class ChargeResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(charge.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].ammount").value(hasItem(DEFAULT_AMMOUNT.doubleValue())))
+            .andExpect(jsonPath("$.[*].amt").value(hasItem(DEFAULT_AMT.doubleValue())))
             .andExpect(jsonPath("$.[*].month").value(hasItem(DEFAULT_MONTH)))
             .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())))
             .andExpect(jsonPath("$.[*].paymentDate").value(hasItem(DEFAULT_PAYMENT_DATE.toString())))
-            .andExpect(jsonPath("$.[*].ammountPaid").value(hasItem(DEFAULT_AMMOUNT_PAID.doubleValue())))
+            .andExpect(jsonPath("$.[*].amtPaid").value(hasItem(DEFAULT_AMT_PAID.doubleValue())))
             .andExpect(jsonPath("$.[*].ref").value(hasItem(DEFAULT_REF)));
     }
 }
