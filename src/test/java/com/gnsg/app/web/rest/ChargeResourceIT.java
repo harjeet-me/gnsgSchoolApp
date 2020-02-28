@@ -46,6 +46,9 @@ public class ChargeResourceIT {
     private static final Double DEFAULT_AMMOUNT = 1D;
     private static final Double UPDATED_AMMOUNT = 2D;
 
+    private static final String DEFAULT_MONTH = "AAAAAAAAAA";
+    private static final String UPDATED_MONTH = "BBBBBBBBBB";
+
     private static final LocalDate DEFAULT_DUE_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DUE_DATE = LocalDate.now(ZoneId.systemDefault());
 
@@ -113,6 +116,7 @@ public class ChargeResourceIT {
         Charge charge = new Charge()
             .name(DEFAULT_NAME)
             .ammount(DEFAULT_AMMOUNT)
+            .month(DEFAULT_MONTH)
             .dueDate(DEFAULT_DUE_DATE)
             .paymentDate(DEFAULT_PAYMENT_DATE)
             .ammountPaid(DEFAULT_AMMOUNT_PAID)
@@ -129,6 +133,7 @@ public class ChargeResourceIT {
         Charge charge = new Charge()
             .name(UPDATED_NAME)
             .ammount(UPDATED_AMMOUNT)
+            .month(UPDATED_MONTH)
             .dueDate(UPDATED_DUE_DATE)
             .paymentDate(UPDATED_PAYMENT_DATE)
             .ammountPaid(UPDATED_AMMOUNT_PAID)
@@ -158,6 +163,7 @@ public class ChargeResourceIT {
         Charge testCharge = chargeList.get(chargeList.size() - 1);
         assertThat(testCharge.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testCharge.getAmmount()).isEqualTo(DEFAULT_AMMOUNT);
+        assertThat(testCharge.getMonth()).isEqualTo(DEFAULT_MONTH);
         assertThat(testCharge.getDueDate()).isEqualTo(DEFAULT_DUE_DATE);
         assertThat(testCharge.getPaymentDate()).isEqualTo(DEFAULT_PAYMENT_DATE);
         assertThat(testCharge.getAmmountPaid()).isEqualTo(DEFAULT_AMMOUNT_PAID);
@@ -203,6 +209,7 @@ public class ChargeResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(charge.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].ammount").value(hasItem(DEFAULT_AMMOUNT.doubleValue())))
+            .andExpect(jsonPath("$.[*].month").value(hasItem(DEFAULT_MONTH)))
             .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())))
             .andExpect(jsonPath("$.[*].paymentDate").value(hasItem(DEFAULT_PAYMENT_DATE.toString())))
             .andExpect(jsonPath("$.[*].ammountPaid").value(hasItem(DEFAULT_AMMOUNT_PAID.doubleValue())))
@@ -222,6 +229,7 @@ public class ChargeResourceIT {
             .andExpect(jsonPath("$.id").value(charge.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.ammount").value(DEFAULT_AMMOUNT.doubleValue()))
+            .andExpect(jsonPath("$.month").value(DEFAULT_MONTH))
             .andExpect(jsonPath("$.dueDate").value(DEFAULT_DUE_DATE.toString()))
             .andExpect(jsonPath("$.paymentDate").value(DEFAULT_PAYMENT_DATE.toString()))
             .andExpect(jsonPath("$.ammountPaid").value(DEFAULT_AMMOUNT_PAID.doubleValue()))
@@ -253,6 +261,7 @@ public class ChargeResourceIT {
         updatedCharge
             .name(UPDATED_NAME)
             .ammount(UPDATED_AMMOUNT)
+            .month(UPDATED_MONTH)
             .dueDate(UPDATED_DUE_DATE)
             .paymentDate(UPDATED_PAYMENT_DATE)
             .ammountPaid(UPDATED_AMMOUNT_PAID)
@@ -269,6 +278,7 @@ public class ChargeResourceIT {
         Charge testCharge = chargeList.get(chargeList.size() - 1);
         assertThat(testCharge.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testCharge.getAmmount()).isEqualTo(UPDATED_AMMOUNT);
+        assertThat(testCharge.getMonth()).isEqualTo(UPDATED_MONTH);
         assertThat(testCharge.getDueDate()).isEqualTo(UPDATED_DUE_DATE);
         assertThat(testCharge.getPaymentDate()).isEqualTo(UPDATED_PAYMENT_DATE);
         assertThat(testCharge.getAmmountPaid()).isEqualTo(UPDATED_AMMOUNT_PAID);
@@ -334,6 +344,7 @@ public class ChargeResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(charge.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].ammount").value(hasItem(DEFAULT_AMMOUNT.doubleValue())))
+            .andExpect(jsonPath("$.[*].month").value(hasItem(DEFAULT_MONTH)))
             .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())))
             .andExpect(jsonPath("$.[*].paymentDate").value(hasItem(DEFAULT_PAYMENT_DATE.toString())))
             .andExpect(jsonPath("$.[*].ammountPaid").value(hasItem(DEFAULT_AMMOUNT_PAID.doubleValue())))

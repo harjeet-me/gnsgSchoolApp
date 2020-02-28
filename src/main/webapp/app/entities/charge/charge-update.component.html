@@ -24,6 +24,12 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.charge.month" for="field_month">Month</label>
+                    <input type="text" class="form-control" name="month" id="field_month"
+                           formControlName="month"/>
+                </div>
+
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gnsgSchoolApp.charge.dueDate" for="field_dueDate">Due Date</label>
                     <div class="input-group">
                         <input id="field_dueDate" type="text" class="form-control" name="dueDate" ngbDatepicker #dueDateDp="ngbDatepicker" formControlName="dueDate"/>

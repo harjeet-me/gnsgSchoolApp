@@ -5,6 +5,7 @@ export interface ICharge {
   id?: number;
   name?: string;
   ammount?: number;
+  month?: string;
   dueDate?: Moment;
   paymentDate?: Moment;
   ammountPaid?: number;
@@ -17,6 +18,7 @@ export class Charge implements ICharge {
     public id?: number,
     public name?: string,
     public ammount?: number,
+    public month?: string,
     public dueDate?: Moment,
     public paymentDate?: Moment,
     public ammountPaid?: number,

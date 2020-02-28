@@ -19,6 +19,7 @@
       },
       "name": "Name",
       "ammount": "Ammount",
+      "month": "Month",
       "dueDate": "Due Date",
       "paymentDate": "Payment Date",
       "ammountPaid": "Ammount Paid",

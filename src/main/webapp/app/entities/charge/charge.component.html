@@ -43,6 +43,7 @@
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.name">Name</span></th>
                     <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.ammount">Ammount</span></th>
+                    <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.month">Month</span></th>
                     <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.dueDate">Due Date</span></th>
                     <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.paymentDate">Payment Date</span></th>
                     <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.ammountPaid">Ammount Paid</span></th>
@@ -56,6 +57,7 @@
                     <td><a [routerLink]="['/charge', charge.id, 'view']">{{ charge.id }}</a></td>
                     <td>{{ charge.name }}</td>
                     <td>{{ charge.ammount }}</td>
+                    <td>{{ charge.month }}</td>
                     <td>{{ charge.dueDate | date:'mediumDate' }}</td>
                     <td>{{ charge.paymentDate | date:'mediumDate' }}</td>
                     <td>{{ charge.ammountPaid }}</td>
