@@ -42,11 +42,11 @@
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.name">Name</span></th>
-                    <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.ammount">Ammount</span></th>
+                    <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.amt">Amt</span></th>
                     <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.month">Month</span></th>
                     <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.dueDate">Due Date</span></th>
                     <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.paymentDate">Payment Date</span></th>
-                    <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.ammountPaid">Ammount Paid</span></th>
+                    <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.amtPaid">Amt Paid</span></th>
                     <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.ref">Ref</span></th>
                     <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.student">Student</span></th>
                     <th scope="col"></th>
@@ -56,11 +56,11 @@
                 <tr *ngFor="let charge of charges ;trackBy: trackId">
                     <td><a [routerLink]="['/charge', charge.id, 'view']">{{ charge.id }}</a></td>
                     <td>{{ charge.name }}</td>
-                    <td>{{ charge.ammount }}</td>
+                    <td>{{ charge.amt }}</td>
                     <td>{{ charge.month }}</td>
                     <td>{{ charge.dueDate | date:'mediumDate' }}</td>
                     <td>{{ charge.paymentDate | date:'mediumDate' }}</td>
-                    <td>{{ charge.ammountPaid }}</td>
+                    <td>{{ charge.amtPaid }}</td>
                     <td>{{ charge.ref }}</td>
                     <td>
                         <div *ngIf="charge.student">

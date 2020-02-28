@@ -28,8 +28,8 @@ public class Charge implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "ammount")
-    private Double ammount;
+    @Column(name = "amt")
+    private Double amt;
 
     @Column(name = "month")
     private String month;
@@ -40,8 +40,8 @@ public class Charge implements Serializable {
     @Column(name = "payment_date")
     private LocalDate paymentDate;
 
-    @Column(name = "ammount_paid")
-    private Double ammountPaid;
+    @Column(name = "amt_paid")
+    private Double amtPaid;
 
     @Column(name = "ref")
     private String ref;
@@ -72,17 +72,17 @@ public class Charge implements Serializable {
         this.name = name;
     }
 
-    public Double getAmmount() {
-        return ammount;
+    public Double getAmt() {
+        return amt;
     }
 
-    public Charge ammount(Double ammount) {
-        this.ammount = ammount;
+    public Charge amt(Double amt) {
+        this.amt = amt;
         return this;
     }
 
-    public void setAmmount(Double ammount) {
-        this.ammount = ammount;
+    public void setAmt(Double amt) {
+        this.amt = amt;
     }
 
     public String getMonth() {
@@ -124,17 +124,17 @@ public class Charge implements Serializable {
         this.paymentDate = paymentDate;
     }
 
-    public Double getAmmountPaid() {
-        return ammountPaid;
+    public Double getAmtPaid() {
+        return amtPaid;
     }
 
-    public Charge ammountPaid(Double ammountPaid) {
-        this.ammountPaid = ammountPaid;
+    public Charge amtPaid(Double amtPaid) {
+        this.amtPaid = amtPaid;
         return this;
     }
 
-    public void setAmmountPaid(Double ammountPaid) {
-        this.ammountPaid = ammountPaid;
+    public void setAmtPaid(Double amtPaid) {
+        this.amtPaid = amtPaid;
     }
 
     public String getRef() {
@@ -185,11 +185,11 @@ public class Charge implements Serializable {
         return "Charge{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", ammount=" + getAmmount() +
+            ", amt=" + getAmt() +
             ", month='" + getMonth() + "'" +
             ", dueDate='" + getDueDate() + "'" +
             ", paymentDate='" + getPaymentDate() + "'" +
-            ", ammountPaid=" + getAmmountPaid() +
+            ", amtPaid=" + getAmtPaid() +
             ", ref='" + getRef() + "'" +
             "}";
     }

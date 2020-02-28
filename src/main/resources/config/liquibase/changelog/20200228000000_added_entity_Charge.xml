@@ -19,7 +19,7 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="ammount" type="double">
+            <column name="amt" type="double">
                 <constraints nullable="true" />
             </column>
             <column name="month" type="varchar(255)">
@@ -31,7 +31,7 @@
             <column name="payment_date" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="ammount_paid" type="double">
+            <column name="amt_paid" type="double">
                 <constraints nullable="true" />
             </column>
             <column name="ref" type="varchar(255)">
@@ -64,11 +64,11 @@
                   tableName="charge">
             <column name="id" type="numeric"/>
             <column name="name" type="string"/>
-            <column name="ammount" type="numeric"/>
+            <column name="amt" type="numeric"/>
             <column name="month" type="string"/>
             <column name="due_date" type="date"/>
             <column name="payment_date" type="date"/>
-            <column name="ammount_paid" type="numeric"/>
+            <column name="amt_paid" type="numeric"/>
             <column name="ref" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>

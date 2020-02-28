@@ -73,11 +73,11 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             name: 'BBBBBB',
-            ammount: 1,
+            amt: 1,
             month: 'BBBBBB',
             dueDate: currentDate.format(DATE_FORMAT),
             paymentDate: currentDate.format(DATE_FORMAT),
-            ammountPaid: 1,
+            amtPaid: 1,
             ref: 'BBBBBB'
           },
           elemDefault
@@ -102,11 +102,11 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             name: 'BBBBBB',
-            ammount: 1,
+            amt: 1,
             month: 'BBBBBB',
             dueDate: currentDate.format(DATE_FORMAT),
             paymentDate: currentDate.format(DATE_FORMAT),
-            ammountPaid: 1,
+            amtPaid: 1,
             ref: 'BBBBBB'
           },
           elemDefault

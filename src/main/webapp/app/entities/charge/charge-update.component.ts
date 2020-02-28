@@ -23,11 +23,11 @@ export class ChargeUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     name: [],
-    ammount: [],
+    amt: [],
     month: [],
     dueDate: [],
     paymentDate: [],
-    ammountPaid: [],
+    amtPaid: [],
     ref: [],
     student: []
   });
@@ -51,11 +51,11 @@ export class ChargeUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: charge.id,
       name: charge.name,
-      ammount: charge.ammount,
+      amt: charge.amt,
       month: charge.month,
       dueDate: charge.dueDate,
       paymentDate: charge.paymentDate,
-      ammountPaid: charge.ammountPaid,
+      amtPaid: charge.amtPaid,
       ref: charge.ref,
       student: charge.student
     });
@@ -80,11 +80,11 @@ export class ChargeUpdateComponent implements OnInit {
       ...new Charge(),
       id: this.editForm.get(['id'])!.value,
       name: this.editForm.get(['name'])!.value,
-      ammount: this.editForm.get(['ammount'])!.value,
+      amt: this.editForm.get(['amt'])!.value,
       month: this.editForm.get(['month'])!.value,
       dueDate: this.editForm.get(['dueDate'])!.value,
       paymentDate: this.editForm.get(['paymentDate'])!.value,
-      ammountPaid: this.editForm.get(['ammountPaid'])!.value,
+      amtPaid: this.editForm.get(['amtPaid'])!.value,
       ref: this.editForm.get(['ref'])!.value,
       student: this.editForm.get(['student'])!.value
     };
