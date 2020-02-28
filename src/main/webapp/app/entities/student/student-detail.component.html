@@ -48,10 +48,10 @@
                 <dd>
                     <span>{{ student.active }}</span>
                 </dd>
-                <dt><span jhiTranslate="gnsgSchoolApp.student.charge">Charge</span></dt>
+                <dt><span jhiTranslate="gnsgSchoolApp.student.appliedCharge">Applied Charge</span></dt>
                 <dd>
-                    <span *ngFor="let charge of student.charges; let last = last">
-                        <a [routerLink]="['/applied-charge', charge?.id, 'view']">{{ charge.type }}</a>{{ last ? '' : ', ' }}
+                    <span *ngFor="let appliedCharge of student.appliedCharges; let last = last">
+                        <a [routerLink]="['/applied-charge', appliedCharge?.id, 'view']">{{ appliedCharge.type }}</a>{{ last ? '' : ', ' }}
                     </span>
                 </dd>
             </dl>

@@ -18,7 +18,7 @@
         {
             "relationshipType": "many-to-many",
             "otherEntityName": "student",
-            "otherEntityRelationshipName": "charge",
+            "otherEntityRelationshipName": "appliedCharge",
             "relationshipName": "student",
             "otherEntityField": "fullName",
             "ownerSide": false

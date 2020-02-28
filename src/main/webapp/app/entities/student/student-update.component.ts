@@ -30,7 +30,7 @@ export class StudentUpdateComponent implements OnInit {
     phoneNumber: [],
     teacherName: [],
     active: [],
-    charges: []
+    appliedCharges: []
   });
 
   constructor(
@@ -61,7 +61,7 @@ export class StudentUpdateComponent implements OnInit {
       phoneNumber: student.phoneNumber,
       teacherName: student.teacherName,
       active: student.active,
-      charges: student.charges
+      appliedCharges: student.appliedCharges
     });
   }
 
@@ -93,7 +93,7 @@ export class StudentUpdateComponent implements OnInit {
       phoneNumber: this.editForm.get(['phoneNumber'])!.value,
       teacherName: this.editForm.get(['teacherName'])!.value,
       active: this.editForm.get(['active'])!.value,
-      charges: this.editForm.get(['charges'])!.value
+      appliedCharges: this.editForm.get(['appliedCharges'])!.value
     };
   }
 

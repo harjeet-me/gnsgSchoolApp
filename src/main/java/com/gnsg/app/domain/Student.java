@@ -61,10 +61,10 @@ public class Student implements Serializable {
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "student_charge",
+    @JoinTable(name = "student_applied_charge",
                joinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "charge_id", referencedColumnName = "id"))
-    private Set<AppliedCharge> charges = new HashSet<>();
+               inverseJoinColumns = @JoinColumn(name = "applied_charge_id", referencedColumnName = "id"))
+    private Set<AppliedCharge> appliedCharges = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -230,29 +230,29 @@ public class Student implements Serializable {
         this.charges = charges;
     }
 
-    public Set<AppliedCharge> getCharges() {
-        return charges;
+    public Set<AppliedCharge> getAppliedCharges() {
+        return appliedCharges;
     }
 
-    public Student charges(Set<AppliedCharge> appliedCharges) {
-        this.charges = appliedCharges;
+    public Student appliedCharges(Set<AppliedCharge> appliedCharges) {
+        this.appliedCharges = appliedCharges;
         return this;
     }
 
-    public Student addCharge(AppliedCharge appliedCharge) {
-        this.charges.add(appliedCharge);
+    public Student addAppliedCharge(AppliedCharge appliedCharge) {
+        this.appliedCharges.add(appliedCharge);
         appliedCharge.getStudents().add(this);
         return this;
     }
 
-    public Student removeCharge(AppliedCharge appliedCharge) {
-        this.charges.remove(appliedCharge);
+    public Student removeAppliedCharge(AppliedCharge appliedCharge) {
+        this.appliedCharges.remove(appliedCharge);
         appliedCharge.getStudents().remove(this);
         return this;
     }
 
-    public void setCharges(Set<AppliedCharge> appliedCharges) {
-        this.charges = appliedCharges;
+    public void setAppliedCharges(Set<AppliedCharge> appliedCharges) {
+        this.appliedCharges = appliedCharges;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

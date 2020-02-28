@@ -9,14 +9,14 @@
     <changeSet id="20200227235900-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="student_id"
-                                 baseTableName="student_charge"
-                                 constraintName="fk_student_charge_student_id"
+                                 baseTableName="student_applied_charge"
+                                 constraintName="fk_student_applied_charge_student_id"
                                  referencedColumnNames="id"
                                  referencedTableName="student"/>
 
-        <addForeignKeyConstraint baseColumnNames="charge_id"
-                                 baseTableName="student_charge"
-                                 constraintName="fk_student_charge_charge_id"
+        <addForeignKeyConstraint baseColumnNames="applied_charge_id"
+                                 baseTableName="student_applied_charge"
+                                 constraintName="fk_student_applied_charge_applied_charge_id"
                                  referencedColumnNames="id"
                                  referencedTableName="applied_charge"/>
         
