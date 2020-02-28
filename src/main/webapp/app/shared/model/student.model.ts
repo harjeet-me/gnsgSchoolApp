@@ -14,7 +14,7 @@ export interface IStudent {
   teacherName?: string;
   active?: boolean;
   charges?: ICharge[];
-  charges?: IAppliedCharge[];
+  appliedCharges?: IAppliedCharge[];
 }
 
 export class Student implements IStudent {
@@ -31,7 +31,7 @@ export class Student implements IStudent {
     public teacherName?: string,
     public active?: boolean,
     public charges?: ICharge[],
-    public charges?: IAppliedCharge[]
+    public appliedCharges?: IAppliedCharge[]
   ) {
     this.active = this.active || false;
   }

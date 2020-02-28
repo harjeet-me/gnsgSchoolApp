@@ -17,14 +17,14 @@ import java.util.Optional;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
-    @Query(value = "select distinct student from Student student left join fetch student.charges",
+    @Query(value = "select distinct student from Student student left join fetch student.appliedCharges",
         countQuery = "select count(distinct student) from Student student")
     Page<Student> findAllWithEagerRelationships(Pageable pageable);
 
-    @Query("select distinct student from Student student left join fetch student.charges")
+    @Query("select distinct student from Student student left join fetch student.appliedCharges")
     List<Student> findAllWithEagerRelationships();
 
-    @Query("select student from Student student left join fetch student.charges where student.id =:id")
+    @Query("select student from Student student left join fetch student.appliedCharges where student.id =:id")
     Optional<Student> findOneWithEagerRelationships(@Param("id") Long id);
 
 }

@@ -72,9 +72,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label jhiTranslate="gnsgSchoolApp.student.charge" for="field_charges">Charge</label>
-                    <select class="form-control" id="field_charges" multiple name="charges" formControlName="charges">
-                        <option [ngValue]="getSelected(editForm.get('charges')!.value, appliedChargeOption)" *ngFor="let appliedChargeOption of appliedcharges; trackBy: trackById">{{ appliedChargeOption.type }}</option>
+                    <label jhiTranslate="gnsgSchoolApp.student.appliedCharge" for="field_appliedCharges">Applied Charge</label>
+                    <select class="form-control" id="field_appliedCharges" multiple name="appliedCharges" formControlName="appliedCharges">
+                        <option [ngValue]="getSelected(editForm.get('appliedCharges')!.value, appliedChargeOption)" *ngFor="let appliedChargeOption of appliedcharges; trackBy: trackById">{{ appliedChargeOption.type }}</option>
                     </select>
                 </div>
             </div>

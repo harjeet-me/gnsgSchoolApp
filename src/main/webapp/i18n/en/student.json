@@ -28,7 +28,7 @@
       "teacherName": "Teacher Name",
       "active": "Active",
       "charge": "Charge",
-      "charge": "Charge"
+      "appliedCharge": "Applied Charge"
     }
   }
 }

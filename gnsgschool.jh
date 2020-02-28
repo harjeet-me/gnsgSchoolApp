@@ -38,7 +38,7 @@ relationship OneToMany {
 
 // }
 relationship ManyToMany {
-  Student { charge(type) }  to  AppliedCharge { student(fullName) }
+  Student { appliedCharge(type) }  to  AppliedCharge { student(fullName) }
 }
 
 

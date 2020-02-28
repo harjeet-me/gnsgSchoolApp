@@ -52,8 +52,8 @@
 
     <changeSet id="20200227235900-1-relations" author="jhipster">
 
-        <createTable tableName="student_charge">
-            <column name="charge_id" type="bigint">
+        <createTable tableName="student_applied_charge">
+            <column name="applied_charge_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="student_id" type="bigint">
@@ -61,7 +61,7 @@
             </column>
         </createTable>
 
-        <addPrimaryKey columnNames="student_id, charge_id" tableName="student_charge"/>
+        <addPrimaryKey columnNames="student_id, applied_charge_id" tableName="student_applied_charge"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

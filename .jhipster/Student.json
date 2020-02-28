@@ -53,7 +53,7 @@
             "relationshipType": "many-to-many",
             "otherEntityName": "appliedCharge",
             "otherEntityRelationshipName": "student",
-            "relationshipName": "charge",
+            "relationshipName": "appliedCharge",
             "otherEntityField": "type",
             "ownerSide": true
         }

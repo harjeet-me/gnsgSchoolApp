@@ -35,7 +35,7 @@ public class AppliedCharge implements Serializable {
     @Column(name = "due_interval")
     private Integer dueInterval;
 
-    @ManyToMany(mappedBy = "charges")
+    @ManyToMany(mappedBy = "appliedCharges")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JsonIgnore
     private Set<Student> students = new HashSet<>();
@@ -99,13 +99,13 @@ public class AppliedCharge implements Serializable {
 
     public AppliedCharge addStudent(Student student) {
         this.students.add(student);
-        student.getCharges().add(this);
+        student.getAppliedCharges().add(this);
         return this;
     }
 
     public AppliedCharge removeStudent(Student student) {
         this.students.remove(student);
-        student.getCharges().remove(this);
+        student.getAppliedCharges().remove(this);
         return this;
     }
 
