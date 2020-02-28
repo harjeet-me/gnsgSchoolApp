@@ -1,5 +1,6 @@
 import { Moment } from 'moment';
 import { IStudent } from 'app/shared/model/student.model';
+import { ChargeStatus } from 'app/shared/model/enumerations/charge-status.model';
 
 export interface ICharge {
   id?: number;
@@ -9,6 +10,7 @@ export interface ICharge {
   dueDate?: Moment;
   paymentDate?: Moment;
   amtPaid?: number;
+  status?: ChargeStatus;
   ref?: string;
   student?: IStudent;
 }
@@ -22,6 +24,7 @@ export class Charge implements ICharge {
     public dueDate?: Moment,
     public paymentDate?: Moment,
     public amtPaid?: number,
+    public status?: ChargeStatus,
     public ref?: string,
     public student?: IStudent
   ) {}

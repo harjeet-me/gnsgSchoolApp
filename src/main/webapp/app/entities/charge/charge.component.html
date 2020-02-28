@@ -47,6 +47,7 @@
                     <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.dueDate">Due Date</span></th>
                     <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.paymentDate">Payment Date</span></th>
                     <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.amtPaid">Amt Paid</span></th>
+                    <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.status">Status</span></th>
                     <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.ref">Ref</span></th>
                     <th scope="col" ><span jhiTranslate="gnsgSchoolApp.charge.student">Student</span></th>
                     <th scope="col"></th>
@@ -61,6 +62,7 @@
                     <td>{{ charge.dueDate | date:'mediumDate' }}</td>
                     <td>{{ charge.paymentDate | date:'mediumDate' }}</td>
                     <td>{{ charge.amtPaid }}</td>
+                    <td jhiTranslate="{{ 'gnsgSchoolApp.ChargeStatus.' + charge.status }}">{{ charge.status }}</td>
                     <td>{{ charge.ref }}</td>
                     <td>
                         <div *ngIf="charge.student">

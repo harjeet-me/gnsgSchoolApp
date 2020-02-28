@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { ChargeService } from 'app/entities/charge/charge.service';
 import { ICharge, Charge } from 'app/shared/model/charge.model';
+import { ChargeStatus } from 'app/shared/model/enumerations/charge-status.model';
 
 describe('Service Tests', () => {
   describe('Charge Service', () => {
@@ -24,7 +25,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Charge(0, 'AAAAAAA', 0, 'AAAAAAA', currentDate, currentDate, 0, 'AAAAAAA');
+      elemDefault = new Charge(0, 'AAAAAAA', 0, 'AAAAAAA', currentDate, currentDate, 0, ChargeStatus.DUE, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -78,6 +79,7 @@ describe('Service Tests', () => {
             dueDate: currentDate.format(DATE_FORMAT),
             paymentDate: currentDate.format(DATE_FORMAT),
             amtPaid: 1,
+            status: 'BBBBBB',
             ref: 'BBBBBB'
           },
           elemDefault
@@ -107,6 +109,7 @@ describe('Service Tests', () => {
             dueDate: currentDate.format(DATE_FORMAT),
             paymentDate: currentDate.format(DATE_FORMAT),
             amtPaid: 1,
+            status: 'BBBBBB',
             ref: 'BBBBBB'
           },
           elemDefault

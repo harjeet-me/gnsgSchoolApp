@@ -10,6 +10,8 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import com.gnsg.app.domain.enumeration.ChargeStatus;
+
 /**
  * A Charge.
  */
@@ -42,6 +44,10 @@ public class Charge implements Serializable {
 
     @Column(name = "amt_paid")
     private Double amtPaid;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private ChargeStatus status;
 
     @Column(name = "ref")
     private String ref;
@@ -137,6 +143,19 @@ public class Charge implements Serializable {
         this.amtPaid = amtPaid;
     }
 
+    public ChargeStatus getStatus() {
+        return status;
+    }
+
+    public Charge status(ChargeStatus status) {
+        this.status = status;
+        return this;
+    }
+
+    public void setStatus(ChargeStatus status) {
+        this.status = status;
+    }
+
     public String getRef() {
         return ref;
     }
@@ -190,6 +209,7 @@ public class Charge implements Serializable {
             ", dueDate='" + getDueDate() + "'" +
             ", paymentDate='" + getPaymentDate() + "'" +
             ", amtPaid=" + getAmtPaid() +
+            ", status='" + getStatus() + "'" +
             ", ref='" + getRef() + "'" +
             "}";
     }

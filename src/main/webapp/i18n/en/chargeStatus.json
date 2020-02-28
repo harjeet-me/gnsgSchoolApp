@@ -1,0 +1,9 @@
+{
+  "gnsgSchoolApp": {
+    "ChargeStatus": {
+      "null": "",
+      "DUE": "DUE",
+      "PAID": "PAID"
+    }
+  }
+}

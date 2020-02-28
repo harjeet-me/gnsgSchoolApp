@@ -1,11 +1,11 @@
-id;name;amt;month;due_date;payment_date;amt_paid;ref
-1;invoice auxiliary;25230;Assurance Licensed;2020-02-27;2020-02-27;58218;Bacon indexing Causeway
-2;Tasty non-volatile;59119;Credit Card Account Orchestrator;2020-02-27;2020-02-27;11898;website Personal Loan Account
-3;Plain;91545;Route District;2020-02-27;2020-02-27;28209;Solutions
-4;value-added bus quantifying;12419;Home Loan Account benchmark protocol;2020-02-27;2020-02-27;40288;CFA Franc BEAC Chicken
-5;Jamaican Dollar Checking Account;50636;Berkshire projection grow;2020-02-27;2020-02-27;53273;Spur
-6;Rubber Gorgeous lime;88499;Quality;2020-02-27;2020-02-27;46398;e-business parsing hack
-7;Money Market Account;1228;open-source;2020-02-27;2020-02-27;81042;solid state product
-8;Republic of Korea Identity Ramp;83668;Rhode Island;2020-02-27;2020-02-27;71165;Senior indigo
-9;grey website;42041;Cambridgeshire Buckinghamshire Consultant;2020-02-27;2020-02-27;23082;Legacy Table
-10;Avon deposit;12248;SDD human-resource;2020-02-27;2020-02-27;55758;transition Hawaii
+id;name;amt;month;due_date;payment_date;amt_paid;status;ref
+1;invoice auxiliary;25230;Assurance Licensed;2020-02-27;2020-02-27;58218;DUE;Engineer
+2;Michigan Credit Card Account Orchestrator;5938;Granite website Personal Loan Account;2020-02-27;2020-02-27;61130;PAID;value-added
+3;Dalasi;94592;SAS deposit Balboa US Dollar;2020-02-27;2020-02-27;62064;PAID;Jamaican Dollar Checking Account
+4;Moroccan Dirham e-tailers;80222;Well Borders;2020-02-27;2020-02-27;77805;PAID;Quality
+5;Practical;75339;Internal Consultant;2020-02-27;2020-02-27;61626;DUE;redundant solid state
+6;input;52882;Identity Ramp;2020-02-27;2020-02-27;58608;DUE;Cook Islands granular Administrator
+7;Cambridgeshire Buckinghamshire Consultant;25326;Multi-layered;2020-02-27;2020-02-27;15116;DUE;Cambridgeshire
+8;human-resource;87001;Maryland transition Hawaii;2020-02-27;2020-02-27;83910;PAID;Handmade Wooden Pizza
+9;fuchsia content-based Auto Loan Account;12198;Bhutan bypassing;2020-02-27;2020-02-27;42272;PAID;green Centralized
+10;Forint;74343;scale Borders;2020-02-27;2020-02-27;17425;DUE;Metical Fresh Table

@@ -19,7 +19,11 @@ entity Student {
     dueDate LocalDate,
     paymentDate LocalDate,
     amtPaid Double,
+    status ChargeStatus,
     ref String
+   }
+   enum ChargeStatus{
+   DUE , PAID
    }
  entity AppliedCharge {
     type String,
