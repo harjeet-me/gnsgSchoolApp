@@ -32,6 +32,10 @@
                 <dd>
                     <span>{{ charge.amtPaid }}</span>
                 </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.charge.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'gnsgSchoolApp.ChargeStatus.' + charge.status }}">{{ charge.status }}</span>
+                </dd>
                 <dt><span jhiTranslate="gnsgSchoolApp.charge.ref">Ref</span></dt>
                 <dd>
                     <span>{{ charge.ref }}</span>

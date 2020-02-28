@@ -26,6 +26,11 @@
             "fieldType": "Double"
         },
         {
+            "fieldName": "status",
+            "fieldType": "ChargeStatus",
+            "fieldValues": "DUE,PAID"
+        },
+        {
             "fieldName": "ref",
             "fieldType": "String"
         }

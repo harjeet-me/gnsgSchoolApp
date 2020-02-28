@@ -34,6 +34,7 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.gnsg.app.domain.enumeration.ChargeStatus;
 /**
  * Integration tests for the {@link ChargeResource} REST controller.
  */
@@ -57,6 +58,9 @@ public class ChargeResourceIT {
 
     private static final Double DEFAULT_AMT_PAID = 1D;
     private static final Double UPDATED_AMT_PAID = 2D;
+
+    private static final ChargeStatus DEFAULT_STATUS = ChargeStatus.DUE;
+    private static final ChargeStatus UPDATED_STATUS = ChargeStatus.PAID;
 
     private static final String DEFAULT_REF = "AAAAAAAAAA";
     private static final String UPDATED_REF = "BBBBBBBBBB";
@@ -120,6 +124,7 @@ public class ChargeResourceIT {
             .dueDate(DEFAULT_DUE_DATE)
             .paymentDate(DEFAULT_PAYMENT_DATE)
             .amtPaid(DEFAULT_AMT_PAID)
+            .status(DEFAULT_STATUS)
             .ref(DEFAULT_REF);
         return charge;
     }
@@ -137,6 +142,7 @@ public class ChargeResourceIT {
             .dueDate(UPDATED_DUE_DATE)
             .paymentDate(UPDATED_PAYMENT_DATE)
             .amtPaid(UPDATED_AMT_PAID)
+            .status(UPDATED_STATUS)
             .ref(UPDATED_REF);
         return charge;
     }
@@ -167,6 +173,7 @@ public class ChargeResourceIT {
         assertThat(testCharge.getDueDate()).isEqualTo(DEFAULT_DUE_DATE);
         assertThat(testCharge.getPaymentDate()).isEqualTo(DEFAULT_PAYMENT_DATE);
         assertThat(testCharge.getAmtPaid()).isEqualTo(DEFAULT_AMT_PAID);
+        assertThat(testCharge.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testCharge.getRef()).isEqualTo(DEFAULT_REF);
 
         // Validate the Charge in Elasticsearch
@@ -213,6 +220,7 @@ public class ChargeResourceIT {
             .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())))
             .andExpect(jsonPath("$.[*].paymentDate").value(hasItem(DEFAULT_PAYMENT_DATE.toString())))
             .andExpect(jsonPath("$.[*].amtPaid").value(hasItem(DEFAULT_AMT_PAID.doubleValue())))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
             .andExpect(jsonPath("$.[*].ref").value(hasItem(DEFAULT_REF)));
     }
     
@@ -233,6 +241,7 @@ public class ChargeResourceIT {
             .andExpect(jsonPath("$.dueDate").value(DEFAULT_DUE_DATE.toString()))
             .andExpect(jsonPath("$.paymentDate").value(DEFAULT_PAYMENT_DATE.toString()))
             .andExpect(jsonPath("$.amtPaid").value(DEFAULT_AMT_PAID.doubleValue()))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
             .andExpect(jsonPath("$.ref").value(DEFAULT_REF));
     }
 
@@ -265,6 +274,7 @@ public class ChargeResourceIT {
             .dueDate(UPDATED_DUE_DATE)
             .paymentDate(UPDATED_PAYMENT_DATE)
             .amtPaid(UPDATED_AMT_PAID)
+            .status(UPDATED_STATUS)
             .ref(UPDATED_REF);
 
         restChargeMockMvc.perform(put("/api/charges")
@@ -282,6 +292,7 @@ public class ChargeResourceIT {
         assertThat(testCharge.getDueDate()).isEqualTo(UPDATED_DUE_DATE);
         assertThat(testCharge.getPaymentDate()).isEqualTo(UPDATED_PAYMENT_DATE);
         assertThat(testCharge.getAmtPaid()).isEqualTo(UPDATED_AMT_PAID);
+        assertThat(testCharge.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testCharge.getRef()).isEqualTo(UPDATED_REF);
 
         // Validate the Charge in Elasticsearch
@@ -348,6 +359,7 @@ public class ChargeResourceIT {
             .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())))
             .andExpect(jsonPath("$.[*].paymentDate").value(hasItem(DEFAULT_PAYMENT_DATE.toString())))
             .andExpect(jsonPath("$.[*].amtPaid").value(hasItem(DEFAULT_AMT_PAID.doubleValue())))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
             .andExpect(jsonPath("$.[*].ref").value(hasItem(DEFAULT_REF)));
     }
 }

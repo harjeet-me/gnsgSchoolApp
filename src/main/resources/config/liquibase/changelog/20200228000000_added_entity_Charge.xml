@@ -34,6 +34,9 @@
             <column name="amt_paid" type="double">
                 <constraints nullable="true" />
             </column>
+            <column name="status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="ref" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -69,6 +72,7 @@
             <column name="due_date" type="date"/>
             <column name="payment_date" type="date"/>
             <column name="amt_paid" type="numeric"/>
+            <column name="status" type="string"/>
             <column name="ref" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>

@@ -23,6 +23,7 @@
       "dueDate": "Due Date",
       "paymentDate": "Payment Date",
       "amtPaid": "Amt Paid",
+      "status": "Status",
       "ref": "Ref",
       "student": "Student"
     }

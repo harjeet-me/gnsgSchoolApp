@@ -28,6 +28,7 @@ export class ChargeUpdateComponent implements OnInit {
     dueDate: [],
     paymentDate: [],
     amtPaid: [],
+    status: [],
     ref: [],
     student: []
   });
@@ -56,6 +57,7 @@ export class ChargeUpdateComponent implements OnInit {
       dueDate: charge.dueDate,
       paymentDate: charge.paymentDate,
       amtPaid: charge.amtPaid,
+      status: charge.status,
       ref: charge.ref,
       student: charge.student
     });
@@ -85,6 +87,7 @@ export class ChargeUpdateComponent implements OnInit {
       dueDate: this.editForm.get(['dueDate'])!.value,
       paymentDate: this.editForm.get(['paymentDate'])!.value,
       amtPaid: this.editForm.get(['amtPaid'])!.value,
+      status: this.editForm.get(['status'])!.value,
       ref: this.editForm.get(['ref'])!.value,
       student: this.editForm.get(['student'])!.value
     };
