@@ -31,6 +31,9 @@ public class Charge implements Serializable {
     @Column(name = "ammount")
     private Double ammount;
 
+    @Column(name = "month")
+    private String month;
+
     @Column(name = "due_date")
     private LocalDate dueDate;
 
@@ -80,6 +83,19 @@ public class Charge implements Serializable {
 
     public void setAmmount(Double ammount) {
         this.ammount = ammount;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public Charge month(String month) {
+        this.month = month;
+        return this;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
     }
 
     public LocalDate getDueDate() {
@@ -170,6 +186,7 @@ public class Charge implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", ammount=" + getAmmount() +
+            ", month='" + getMonth() + "'" +
             ", dueDate='" + getDueDate() + "'" +
             ", paymentDate='" + getPaymentDate() + "'" +
             ", ammountPaid=" + getAmmountPaid() +
