@@ -15,6 +15,7 @@ entity Student {
  entity Charge {
     name String,
     ammount Double,
+    month String,
     dueDate LocalDate,
     paymentDate LocalDate,
     ammountPaid Double,
