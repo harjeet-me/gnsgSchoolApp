@@ -1,11 +1,193 @@
+
+// an ignored comment
+/** not an ignored comment */
+entity Program {
+	programType EVENTTYPE ,
+    location EVENTLOCATION
+    etime Instant,
+    family String,
+    phoneNumber String,
+    address String ,
+    withLangar Boolean,
+    langarMenu LANGARMENU ,
+    langarTime Instant ,
+    dueAmt BigDecimal,
+    paidAmt BigDecimal,
+    balAmt BigDecimal,
+    recieptNumber Long,
+    remark String ,
+    bookingDate Instant,
+    status EventStatus,
+    createdDate Instant ,
+    createdBy String ,
+    lastModifiedDate Instant ,
+    lastModifiedBy String
+
+    
+}
+enum PATHTYPE{
+   AKHAND_PATH , SEHAJ_PATH 
+}
+entity ASPath {
+    program PATHTYPE ,
+	family String,
+    phoneNumber String,
+    address String ,
+    startDate LocalDate ,
+    endDate LocalDate,
+    remark String ,
+    bookingDate Instant,
+    desc String ,
+    status EventStatus,
+     createdDate Instant ,
+    createdBy String ,
+    lastModifiedDate Instant ,
+    lastModifiedBy String
+
+    
+}
+enum EXPTYPE{
+INVOICE , RECIEPT , VOUCHER
+}
+
+enum REVTYPE{
+PROGRAM , GOLAK , SEHAJ_PATH_BHETA
+}
+entity Expense {
+    expType  EXPTYPE ,
+	amt Double ,
+    date LocalDate ,
+    desc String ,
+    createdDate Instant ,
+    createdBy String ,
+    lastModifiedDate Instant ,
+    lastModifiedBy String 
+}
+entity Revenue {
+    revType  REVTYPE ,
+	amt Double ,
+    date LocalDate ,
+    desc String ,
+    createdDate Instant ,
+    createdBy String ,
+    lastModifiedDate Instant ,
+    lastModifiedBy String 
+}
+enum EventStatus{
+   BOOKED , COMPLETED , CANCELLED , REQUESTED , PAID
+}
+
+enum ROULTIME{
+   T10_12 , COMPLETED , CANCELLED , REQUESTED , PAID
+}
+enum LANGARMENU {
+SIMPLE_JALEBI_SHAHIPANEER ,
+SIMPLE_JALEBI_MATARPANEER ,
+SIMPLE_KHEER_SHAHIPANEER ,
+SIMPLE_KHEER_MATARPANEER,
+SIMPLE_JALEBI_PALAKPANEER ,
+SIMPLE_KHEER_PALAKPANEER ,
+PAKOURE,
+JALEBI,
+KHEER
+}
+enum EVENTLOCATION{
+HALL_2 , HALL_3 , GALLERY_UPSTAIRS , MAIN_HALL, HOME , GNSG_SENIOR_CENTER
+}
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity Task {
+	title String,
+	description String ,
+    taskTime Instant
+}
+
+/**
+ * The Employee entity.
+ */
+entity Sevadar {
+	/**
+	* The firstname attribute.
+	*/
+	name String,
+	email String,
+	phoneNumber String,
+    address String ,
+    sevaStartDate Instant,
+    sevaEndDate Instant,
+	isValid Boolean,
+     createdDate Instant ,
+    createdBy String ,
+    lastModifiedDate Instant ,
+    lastModifiedBy String
+}
+
+
+
+entity PRoul {
+	/**
+	* The firstname attribute.
+	*/
+    name String
+	desc String,
+	totalRoul String ,
+    createdDate Instant ,
+    createdBy String ,
+    lastModifiedDate Instant ,
+    lastModifiedBy String
+	
+}
+enum EVENTTYPE {
+    SUKHMANI_SAHIB, 
+    SUKHMANI_SAHIB_AT_HOME,
+    FUNERAL_SEHAJ_PATH_BHOG, 
+    AKHAND_PATH_SAHIB ,
+    SEHAJ_PATH_START , 
+    LANGAR ,
+    KIRTAN,
+    SEHAJ_PATH_BHOG ,
+    DEG_SEVA
+}
+
+// defining multiple OneToMany relationships with comments
+ relationship OneToMany {
+   //Sevadar  to   Program {sevadar(name)}
+   
+    Sevadar  to   Program {sevadar(name)}
+    ASPath to  PRoul {sehajPath(desc)} 
+      //Sevadar  to   SehajPath {granthi(name)}
+   }
+
+ relationship OneToOne {
+    PRoul {pathi(name)} to     Sevadar 
+  
+   
+   
+   }
+
+
+// Set pagination options
+
+paginate PRoul , Task , ASPath , Program , Sevadar with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
+
+
 entity Student {
     
 	fullName String,
     parentName String,
     address String,
-    city String,
-	stateProvince String,
-   	postalCode String ,
     email String, 
  	phoneNumber Long,
     teacherName String ,
@@ -23,7 +205,7 @@ entity Student {
     ref String
    }
    enum ChargeStatus{
-   DUE , PAID
+   DUE , PAID , WAVED
    }
  entity AppliedCharge {
     type String,
