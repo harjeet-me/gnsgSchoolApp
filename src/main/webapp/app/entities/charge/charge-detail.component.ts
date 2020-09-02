@@ -5,7 +5,7 @@ import { ICharge } from 'app/shared/model/charge.model';
 
 @Component({
   selector: 'jhi-charge-detail',
-  templateUrl: './charge-detail.component.html'
+  templateUrl: './charge-detail.component.html',
 })
 export class ChargeDetailComponent implements OnInit {
   charge: ICharge | null = null;

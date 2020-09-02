@@ -61,6 +61,7 @@ public class AppliedChargeServiceImpl implements AppliedChargeService {
         return appliedChargeRepository.findAll();
     }
 
+
     /**
      * Get one appliedCharge by id.
      *
@@ -82,6 +83,7 @@ public class AppliedChargeServiceImpl implements AppliedChargeService {
     @Override
     public void delete(Long id) {
         log.debug("Request to delete AppliedCharge : {}", id);
+
         appliedChargeRepository.deleteById(id);
         appliedChargeSearchRepository.deleteById(id);
     }
@@ -98,6 +100,6 @@ public class AppliedChargeServiceImpl implements AppliedChargeService {
         log.debug("Request to search AppliedCharges for query {}", query);
         return StreamSupport
             .stream(appliedChargeSearchRepository.search(queryStringQuery(query)).spliterator(), false)
-            .collect(Collectors.toList());
+        .collect(Collectors.toList());
     }
 }

@@ -15,7 +15,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "student")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "student")
 public class Student implements Serializable {
 
@@ -34,15 +34,6 @@ public class Student implements Serializable {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "city")
-    private String city;
-
-    @Column(name = "state_province")
-    private String stateProvince;
-
-    @Column(name = "postal_code")
-    private String postalCode;
-
     @Column(name = "email")
     private String email;
 
@@ -56,17 +47,17 @@ public class Student implements Serializable {
     private Boolean active;
 
     @OneToMany(mappedBy = "student")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Charge> charges = new HashSet<>();
 
     @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JoinTable(name = "student_applied_charge",
                joinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "applied_charge_id", referencedColumnName = "id"))
     private Set<AppliedCharge> appliedCharges = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
     }
@@ -112,45 +103,6 @@ public class Student implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public Student city(String city) {
-        this.city = city;
-        return this;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStateProvince() {
-        return stateProvince;
-    }
-
-    public Student stateProvince(String stateProvince) {
-        this.stateProvince = stateProvince;
-        return this;
-    }
-
-    public void setStateProvince(String stateProvince) {
-        this.stateProvince = stateProvince;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public Student postalCode(String postalCode) {
-        this.postalCode = postalCode;
-        return this;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
     }
 
     public String getEmail() {
@@ -254,7 +206,7 @@ public class Student implements Serializable {
     public void setAppliedCharges(Set<AppliedCharge> appliedCharges) {
         this.appliedCharges = appliedCharges;
     }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
     public boolean equals(Object o) {
@@ -272,6 +224,7 @@ public class Student implements Serializable {
         return 31;
     }
 
+    // prettier-ignore
     @Override
     public String toString() {
         return "Student{" +
@@ -279,9 +232,6 @@ public class Student implements Serializable {
             ", fullName='" + getFullName() + "'" +
             ", parentName='" + getParentName() + "'" +
             ", address='" + getAddress() + "'" +
-            ", city='" + getCity() + "'" +
-            ", stateProvince='" + getStateProvince() + "'" +
-            ", postalCode='" + getPostalCode() + "'" +
             ", email='" + getEmail() + "'" +
             ", phoneNumber=" + getPhoneNumber() +
             ", teacherName='" + getTeacherName() + "'" +

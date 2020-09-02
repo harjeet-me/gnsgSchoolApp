@@ -25,6 +25,7 @@ public interface AppliedChargeService {
      */
     List<AppliedCharge> findAll();
 
+
     /**
      * Get the "id" appliedCharge.
      *

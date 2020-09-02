@@ -1,0 +1,7 @@
+export const enum REVTYPE {
+  PROGRAM = 'PROGRAM',
+
+  GOLAK = 'GOLAK',
+
+  SEHAJ_PATH_BHETA = 'SEHAJ_PATH_BHETA',
+}

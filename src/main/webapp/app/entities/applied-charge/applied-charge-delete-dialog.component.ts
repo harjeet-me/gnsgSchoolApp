@@ -6,7 +6,7 @@ import { IAppliedCharge } from 'app/shared/model/applied-charge.model';
 import { AppliedChargeService } from './applied-charge.service';
 
 @Component({
-  templateUrl: './applied-charge-delete-dialog.component.html'
+  templateUrl: './applied-charge-delete-dialog.component.html',
 })
 export class AppliedChargeDeleteDialogComponent {
   appliedCharge?: IAppliedCharge;

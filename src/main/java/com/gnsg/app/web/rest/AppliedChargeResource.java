@@ -113,6 +113,7 @@ public class AppliedChargeResource {
     @DeleteMapping("/applied-charges/{id}")
     public ResponseEntity<Void> deleteAppliedCharge(@PathVariable Long id) {
         log.debug("REST request to delete AppliedCharge : {}", id);
+
         appliedChargeService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }

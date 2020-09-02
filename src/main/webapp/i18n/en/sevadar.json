@@ -1,0 +1,37 @@
+{
+  "gnsgSchoolApp": {
+    "sevadar": {
+      "home": {
+        "title": "Sevadars",
+        "createLabel": "Create a new Sevadar",
+        "createOrEditLabel": "Create or edit a Sevadar",
+        "search": "Search for Sevadar",
+        "notFound": "No Sevadars found"
+      },
+      "created": "A new Sevadar is created with identifier {{ param }}",
+      "updated": "A Sevadar is updated with identifier {{ param }}",
+      "deleted": "A Sevadar is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sevadar {{ id }}?"
+      },
+      "detail": {
+        "title": "Sevadar"
+      },
+      "name": "Name",
+      "email": "Email",
+      "phoneNumber": "Phone Number",
+      "address": "Address",
+      "sevaStartDate": "Seva Start Date",
+      "sevaEndDate": "Seva End Date",
+      "isValid": "Is Valid",
+      "createdDate": "Created Date",
+      "createdBy": "Created By",
+      "lastModifiedDate": "Last Modified Date",
+      "lastModifiedBy": "Last Modified By",
+      "program": "Program",
+      "help": {
+        "name": "The firstname attribute."
+      }
+    }
+  }
+}

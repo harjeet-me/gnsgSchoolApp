@@ -26,5 +26,4 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     @Query("select student from Student student left join fetch student.appliedCharges where student.id =:id")
     Optional<Student> findOneWithEagerRelationships(@Param("id") Long id);
-
 }

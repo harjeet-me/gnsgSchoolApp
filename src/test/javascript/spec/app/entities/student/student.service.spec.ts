@@ -13,14 +13,14 @@ describe('Service Tests', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [HttpClientTestingModule]
+        imports: [HttpClientTestingModule],
       });
       expectedResult = null;
       injector = getTestBed();
       service = injector.get(StudentService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Student(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0, 'AAAAAAA', false);
+      elemDefault = new Student(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0, 'AAAAAAA', false);
     });
 
     describe('Service methods', () => {
@@ -37,7 +37,7 @@ describe('Service Tests', () => {
       it('should create a Student', () => {
         const returnedFromService = Object.assign(
           {
-            id: 0
+            id: 0,
           },
           elemDefault
         );
@@ -57,13 +57,10 @@ describe('Service Tests', () => {
             fullName: 'BBBBBB',
             parentName: 'BBBBBB',
             address: 'BBBBBB',
-            city: 'BBBBBB',
-            stateProvince: 'BBBBBB',
-            postalCode: 'BBBBBB',
             email: 'BBBBBB',
             phoneNumber: 1,
             teacherName: 'BBBBBB',
-            active: true
+            active: true,
           },
           elemDefault
         );
@@ -83,13 +80,10 @@ describe('Service Tests', () => {
             fullName: 'BBBBBB',
             parentName: 'BBBBBB',
             address: 'BBBBBB',
-            city: 'BBBBBB',
-            stateProvince: 'BBBBBB',
-            postalCode: 'BBBBBB',
             email: 'BBBBBB',
             phoneNumber: 1,
             teacherName: 'BBBBBB',
-            active: true
+            active: true,
           },
           elemDefault
         );

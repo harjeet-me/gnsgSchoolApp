@@ -1,11 +1,11 @@
 id;name;amt;month;due_date;payment_date;amt_paid;status;ref
-1;invoice auxiliary;25230;Assurance Licensed;2020-02-27;2020-02-27;58218;DUE;Engineer
-2;Michigan Credit Card Account Orchestrator;5938;Granite website Personal Loan Account;2020-02-27;2020-02-27;61130;PAID;value-added
-3;Dalasi;94592;SAS deposit Balboa US Dollar;2020-02-27;2020-02-27;62064;PAID;Jamaican Dollar Checking Account
-4;Moroccan Dirham e-tailers;80222;Well Borders;2020-02-27;2020-02-27;77805;PAID;Quality
+1;invoice auxiliary;25230;Assurance Licensed;2020-02-27;2020-02-27;58218;PAID;Engineer
+2;Michigan Credit Card Account Orchestrator;5938;Granite website Personal Loan Account;2020-02-27;2020-02-27;61130;WAVED;value-added
+3;Dalasi;94592;SAS deposit Balboa US Dollar;2020-02-27;2020-02-27;62064;WAVED;Jamaican Dollar Checking Account
+4;Moroccan Dirham e-tailers;80222;Well Borders;2020-02-27;2020-02-27;77805;WAVED;Quality
 5;Practical;75339;Internal Consultant;2020-02-27;2020-02-27;61626;DUE;redundant solid state
 6;input;52882;Identity Ramp;2020-02-27;2020-02-27;58608;DUE;Cook Islands granular Administrator
 7;Cambridgeshire Buckinghamshire Consultant;25326;Multi-layered;2020-02-27;2020-02-27;15116;DUE;Cambridgeshire
-8;human-resource;87001;Maryland transition Hawaii;2020-02-27;2020-02-27;83910;PAID;Handmade Wooden Pizza
-9;fuchsia content-based Auto Loan Account;12198;Bhutan bypassing;2020-02-27;2020-02-27;42272;PAID;green Centralized
-10;Forint;74343;scale Borders;2020-02-27;2020-02-27;17425;DUE;Metical Fresh Table
+8;human-resource;87001;Maryland transition Hawaii;2020-02-27;2020-02-27;83910;WAVED;Handmade Wooden Pizza
+9;fuchsia content-based Auto Loan Account;12198;Bhutan bypassing;2020-02-27;2020-02-27;42272;WAVED;green Centralized
+10;Forint;74343;scale Borders;2020-02-27;2020-02-27;17425;PAID;Metical Fresh Table

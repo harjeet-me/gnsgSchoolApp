@@ -1,0 +1,62 @@
+{
+  "name": "PRoul",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "javadoc": "The firstname attribute."
+    },
+    {
+      "fieldName": "desc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalRoul",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "sevadar",
+      "otherEntityRelationshipName": "pRoul",
+      "relationshipName": "pathi",
+      "otherEntityField": "name",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "aSPath",
+      "otherEntityRelationshipName": "pRoul",
+      "relationshipName": "sehajPath",
+      "otherEntityField": "desc"
+    }
+  ],
+  "changelogDate": "20200902053023",
+  "entityTableName": "p_roul",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

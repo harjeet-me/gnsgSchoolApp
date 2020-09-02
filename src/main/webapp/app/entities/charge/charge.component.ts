@@ -11,7 +11,7 @@ import { ChargeDeleteDialogComponent } from './charge-delete-dialog.component';
 
 @Component({
   selector: 'jhi-charge',
-  templateUrl: './charge.component.html'
+  templateUrl: './charge.component.html',
 })
 export class ChargeComponent implements OnInit, OnDestroy {
   charges?: ICharge[];
@@ -34,7 +34,7 @@ export class ChargeComponent implements OnInit, OnDestroy {
     if (this.currentSearch) {
       this.chargeService
         .search({
-          query: this.currentSearch
+          query: this.currentSearch,
         })
         .subscribe((res: HttpResponse<ICharge[]>) => (this.charges = res.body || []));
       return;

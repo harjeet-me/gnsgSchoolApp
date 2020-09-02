@@ -11,6 +11,6 @@ import { appliedChargeRoute } from './applied-charge.route';
 @NgModule({
   imports: [GnsgSchoolAppSharedModule, RouterModule.forChild(appliedChargeRoute)],
   declarations: [AppliedChargeComponent, AppliedChargeDetailComponent, AppliedChargeUpdateComponent, AppliedChargeDeleteDialogComponent],
-  entryComponents: [AppliedChargeDeleteDialogComponent]
+  entryComponents: [AppliedChargeDeleteDialogComponent],
 })
 export class GnsgSchoolAppAppliedChargeModule {}

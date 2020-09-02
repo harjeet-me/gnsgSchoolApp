@@ -6,9 +6,6 @@ export interface IStudent {
   fullName?: string;
   parentName?: string;
   address?: string;
-  city?: string;
-  stateProvince?: string;
-  postalCode?: string;
   email?: string;
   phoneNumber?: number;
   teacherName?: string;
@@ -23,9 +20,6 @@ export class Student implements IStudent {
     public fullName?: string,
     public parentName?: string,
     public address?: string,
-    public city?: string,
-    public stateProvince?: string,
-    public postalCode?: string,
     public email?: string,
     public phoneNumber?: number,
     public teacherName?: string,

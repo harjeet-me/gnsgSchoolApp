@@ -5,26 +5,23 @@ import com.gnsg.app.domain.AppliedCharge;
 import com.gnsg.app.repository.AppliedChargeRepository;
 import com.gnsg.app.repository.search.AppliedChargeSearchRepository;
 import com.gnsg.app.service.AppliedChargeService;
-import com.gnsg.app.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
+import org.mockito.Mock;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.Validator;
-
 import javax.persistence.EntityManager;
 import java.util.Collections;
 import java.util.List;
 
-import static com.gnsg.app.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 import static org.hamcrest.Matchers.hasItem;
@@ -36,6 +33,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Integration tests for the {@link AppliedChargeResource} REST controller.
  */
 @SpringBootTest(classes = GnsgSchoolApp.class)
+@ExtendWith(MockitoExtension.class)
+@AutoConfigureMockMvc
+@WithMockUser
 public class AppliedChargeResourceIT {
 
     private static final String DEFAULT_TYPE = "AAAAAAAAAA";
@@ -62,35 +62,12 @@ public class AppliedChargeResourceIT {
     private AppliedChargeSearchRepository mockAppliedChargeSearchRepository;
 
     @Autowired
-    private MappingJackson2HttpMessageConverter jacksonMessageConverter;
-
-    @Autowired
-    private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
-
-    @Autowired
-    private ExceptionTranslator exceptionTranslator;
-
-    @Autowired
     private EntityManager em;
 
     @Autowired
-    private Validator validator;
-
     private MockMvc restAppliedChargeMockMvc;
 
     private AppliedCharge appliedCharge;
-
-    @BeforeEach
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
-        final AppliedChargeResource appliedChargeResource = new AppliedChargeResource(appliedChargeService);
-        this.restAppliedChargeMockMvc = MockMvcBuilders.standaloneSetup(appliedChargeResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter)
-            .setValidator(validator).build();
-    }
 
     /**
      * Create an entity for this test.
@@ -128,10 +105,9 @@ public class AppliedChargeResourceIT {
     @Transactional
     public void createAppliedCharge() throws Exception {
         int databaseSizeBeforeCreate = appliedChargeRepository.findAll().size();
-
         // Create the AppliedCharge
         restAppliedChargeMockMvc.perform(post("/api/applied-charges")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(MediaType.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(appliedCharge)))
             .andExpect(status().isCreated());
 
@@ -157,7 +133,7 @@ public class AppliedChargeResourceIT {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restAppliedChargeMockMvc.perform(post("/api/applied-charges")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(MediaType.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(appliedCharge)))
             .andExpect(status().isBadRequest());
 
@@ -201,7 +177,6 @@ public class AppliedChargeResourceIT {
             .andExpect(jsonPath("$.ammount").value(DEFAULT_AMMOUNT.doubleValue()))
             .andExpect(jsonPath("$.dueInterval").value(DEFAULT_DUE_INTERVAL));
     }
-
     @Test
     @Transactional
     public void getNonExistingAppliedCharge() throws Exception {
@@ -215,8 +190,6 @@ public class AppliedChargeResourceIT {
     public void updateAppliedCharge() throws Exception {
         // Initialize the database
         appliedChargeService.save(appliedCharge);
-        // As the test used the service layer, reset the Elasticsearch mock repository
-        reset(mockAppliedChargeSearchRepository);
 
         int databaseSizeBeforeUpdate = appliedChargeRepository.findAll().size();
 
@@ -230,7 +203,7 @@ public class AppliedChargeResourceIT {
             .dueInterval(UPDATED_DUE_INTERVAL);
 
         restAppliedChargeMockMvc.perform(put("/api/applied-charges")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(MediaType.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(updatedAppliedCharge)))
             .andExpect(status().isOk());
 
@@ -243,7 +216,7 @@ public class AppliedChargeResourceIT {
         assertThat(testAppliedCharge.getDueInterval()).isEqualTo(UPDATED_DUE_INTERVAL);
 
         // Validate the AppliedCharge in Elasticsearch
-        verify(mockAppliedChargeSearchRepository, times(1)).save(testAppliedCharge);
+        verify(mockAppliedChargeSearchRepository, times(2)).save(testAppliedCharge);
     }
 
     @Test
@@ -251,11 +224,9 @@ public class AppliedChargeResourceIT {
     public void updateNonExistingAppliedCharge() throws Exception {
         int databaseSizeBeforeUpdate = appliedChargeRepository.findAll().size();
 
-        // Create the AppliedCharge
-
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restAppliedChargeMockMvc.perform(put("/api/applied-charges")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(MediaType.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(appliedCharge)))
             .andExpect(status().isBadRequest());
 
@@ -277,7 +248,7 @@ public class AppliedChargeResourceIT {
 
         // Delete the appliedCharge
         restAppliedChargeMockMvc.perform(delete("/api/applied-charges/{id}", appliedCharge.getId())
-            .accept(TestUtil.APPLICATION_JSON))
+            .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item
@@ -291,10 +262,12 @@ public class AppliedChargeResourceIT {
     @Test
     @Transactional
     public void searchAppliedCharge() throws Exception {
+        // Configure the mock search repository
         // Initialize the database
         appliedChargeService.save(appliedCharge);
         when(mockAppliedChargeSearchRepository.search(queryStringQuery("id:" + appliedCharge.getId())))
             .thenReturn(Collections.singletonList(appliedCharge));
+
         // Search the appliedCharge
         restAppliedChargeMockMvc.perform(get("/api/_search/applied-charges?query=id:" + appliedCharge.getId()))
             .andExpect(status().isOk())

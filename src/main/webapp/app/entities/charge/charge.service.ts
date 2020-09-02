@@ -60,7 +60,7 @@ export class ChargeService {
   protected convertDateFromClient(charge: ICharge): ICharge {
     const copy: ICharge = Object.assign({}, charge, {
       dueDate: charge.dueDate && charge.dueDate.isValid() ? charge.dueDate.format(DATE_FORMAT) : undefined,
-      paymentDate: charge.paymentDate && charge.paymentDate.isValid() ? charge.paymentDate.format(DATE_FORMAT) : undefined
+      paymentDate: charge.paymentDate && charge.paymentDate.isValid() ? charge.paymentDate.format(DATE_FORMAT) : undefined,
     });
     return copy;
   }

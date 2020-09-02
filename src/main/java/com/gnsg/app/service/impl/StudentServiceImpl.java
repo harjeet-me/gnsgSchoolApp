@@ -61,6 +61,7 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findAll(pageable);
     }
 
+
     /**
      * Get all the students with eager load of many-to-many relationships.
      *
@@ -91,6 +92,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void delete(Long id) {
         log.debug("Request to delete Student : {}", id);
+
         studentRepository.deleteById(id);
         studentSearchRepository.deleteById(id);
     }

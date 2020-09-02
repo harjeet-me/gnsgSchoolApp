@@ -1,0 +1,188 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-program-heading" jhiTranslate="gnsgSchoolApp.program.home.createOrEditLabel">Create or edit a Program</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.programType" for="field_programType">Program Type</label>
+                    <select class="form-control" name="programType" formControlName="programType" id="field_programType">
+                        <option value="SUKHMANI_SAHIB">{{ 'gnsgSchoolApp.EVENTTYPE.SUKHMANI_SAHIB' | translate }}</option>
+                        <option value="SUKHMANI_SAHIB_AT_HOME">{{ 'gnsgSchoolApp.EVENTTYPE.SUKHMANI_SAHIB_AT_HOME' | translate }}</option>
+                        <option value="FUNERAL_SEHAJ_PATH_BHOG">{{ 'gnsgSchoolApp.EVENTTYPE.FUNERAL_SEHAJ_PATH_BHOG' | translate }}</option>
+                        <option value="AKHAND_PATH_SAHIB">{{ 'gnsgSchoolApp.EVENTTYPE.AKHAND_PATH_SAHIB' | translate }}</option>
+                        <option value="SEHAJ_PATH_START">{{ 'gnsgSchoolApp.EVENTTYPE.SEHAJ_PATH_START' | translate }}</option>
+                        <option value="LANGAR">{{ 'gnsgSchoolApp.EVENTTYPE.LANGAR' | translate }}</option>
+                        <option value="KIRTAN">{{ 'gnsgSchoolApp.EVENTTYPE.KIRTAN' | translate }}</option>
+                        <option value="SEHAJ_PATH_BHOG">{{ 'gnsgSchoolApp.EVENTTYPE.SEHAJ_PATH_BHOG' | translate }}</option>
+                        <option value="DEG_SEVA">{{ 'gnsgSchoolApp.EVENTTYPE.DEG_SEVA' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.location" for="field_location">Location</label>
+                    <select class="form-control" name="location" formControlName="location" id="field_location">
+                        <option value="HALL_2">{{ 'gnsgSchoolApp.EVENTLOCATION.HALL_2' | translate }}</option>
+                        <option value="HALL_3">{{ 'gnsgSchoolApp.EVENTLOCATION.HALL_3' | translate }}</option>
+                        <option value="GALLERY_UPSTAIRS">{{ 'gnsgSchoolApp.EVENTLOCATION.GALLERY_UPSTAIRS' | translate }}</option>
+                        <option value="MAIN_HALL">{{ 'gnsgSchoolApp.EVENTLOCATION.MAIN_HALL' | translate }}</option>
+                        <option value="HOME">{{ 'gnsgSchoolApp.EVENTLOCATION.HOME' | translate }}</option>
+                        <option value="GNSG_SENIOR_CENTER">{{ 'gnsgSchoolApp.EVENTLOCATION.GNSG_SENIOR_CENTER' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.etime" for="field_etime">Etime</label>
+                    <div class="d-flex">
+                        <input id="field_etime" type="datetime-local" class="form-control" name="etime" formControlName="etime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.family" for="field_family">Family</label>
+                    <input type="text" class="form-control" name="family" id="field_family"
+                           formControlName="family"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.phoneNumber" for="field_phoneNumber">Phone Number</label>
+                    <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
+                           formControlName="phoneNumber"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.address" for="field_address">Address</label>
+                    <input type="text" class="form-control" name="address" id="field_address"
+                           formControlName="address"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.withLangar" for="field_withLangar">With Langar</label>
+                    <input type="checkbox" class="form-control" name="withLangar" id="field_withLangar"
+                           formControlName="withLangar"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.langarMenu" for="field_langarMenu">Langar Menu</label>
+                    <select class="form-control" name="langarMenu" formControlName="langarMenu" id="field_langarMenu">
+                        <option value="SIMPLE_JALEBI_SHAHIPANEER">{{ 'gnsgSchoolApp.LANGARMENU.SIMPLE_JALEBI_SHAHIPANEER' | translate }}</option>
+                        <option value="SIMPLE_JALEBI_MATARPANEER">{{ 'gnsgSchoolApp.LANGARMENU.SIMPLE_JALEBI_MATARPANEER' | translate }}</option>
+                        <option value="SIMPLE_KHEER_SHAHIPANEER">{{ 'gnsgSchoolApp.LANGARMENU.SIMPLE_KHEER_SHAHIPANEER' | translate }}</option>
+                        <option value="SIMPLE_KHEER_MATARPANEER">{{ 'gnsgSchoolApp.LANGARMENU.SIMPLE_KHEER_MATARPANEER' | translate }}</option>
+                        <option value="SIMPLE_JALEBI_PALAKPANEER">{{ 'gnsgSchoolApp.LANGARMENU.SIMPLE_JALEBI_PALAKPANEER' | translate }}</option>
+                        <option value="SIMPLE_KHEER_PALAKPANEER">{{ 'gnsgSchoolApp.LANGARMENU.SIMPLE_KHEER_PALAKPANEER' | translate }}</option>
+                        <option value="PAKOURE">{{ 'gnsgSchoolApp.LANGARMENU.PAKOURE' | translate }}</option>
+                        <option value="JALEBI">{{ 'gnsgSchoolApp.LANGARMENU.JALEBI' | translate }}</option>
+                        <option value="KHEER">{{ 'gnsgSchoolApp.LANGARMENU.KHEER' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.langarTime" for="field_langarTime">Langar Time</label>
+                    <div class="d-flex">
+                        <input id="field_langarTime" type="datetime-local" class="form-control" name="langarTime" formControlName="langarTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.dueAmt" for="field_dueAmt">Due Amt</label>
+                    <input type="number" class="form-control" name="dueAmt" id="field_dueAmt"
+                           formControlName="dueAmt"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.paidAmt" for="field_paidAmt">Paid Amt</label>
+                    <input type="number" class="form-control" name="paidAmt" id="field_paidAmt"
+                           formControlName="paidAmt"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.balAmt" for="field_balAmt">Bal Amt</label>
+                    <input type="number" class="form-control" name="balAmt" id="field_balAmt"
+                           formControlName="balAmt"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.recieptNumber" for="field_recieptNumber">Reciept Number</label>
+                    <input type="number" class="form-control" name="recieptNumber" id="field_recieptNumber"
+                           formControlName="recieptNumber"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.remark" for="field_remark">Remark</label>
+                    <input type="text" class="form-control" name="remark" id="field_remark"
+                           formControlName="remark"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.bookingDate" for="field_bookingDate">Booking Date</label>
+                    <div class="d-flex">
+                        <input id="field_bookingDate" type="datetime-local" class="form-control" name="bookingDate" formControlName="bookingDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" formControlName="status" id="field_status">
+                        <option value="BOOKED">{{ 'gnsgSchoolApp.EventStatus.BOOKED' | translate }}</option>
+                        <option value="COMPLETED">{{ 'gnsgSchoolApp.EventStatus.COMPLETED' | translate }}</option>
+                        <option value="CANCELLED">{{ 'gnsgSchoolApp.EventStatus.CANCELLED' | translate }}</option>
+                        <option value="REQUESTED">{{ 'gnsgSchoolApp.EventStatus.REQUESTED' | translate }}</option>
+                        <option value="PAID">{{ 'gnsgSchoolApp.EventStatus.PAID' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.createdDate" for="field_createdDate">Created Date</label>
+                    <div class="d-flex">
+                        <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" formControlName="createdDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.createdBy" for="field_createdBy">Created By</label>
+                    <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                           formControlName="createdBy"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.lastModifiedDate" for="field_lastModifiedDate">Last Modified Date</label>
+                    <div class="d-flex">
+                        <input id="field_lastModifiedDate" type="datetime-local" class="form-control" name="lastModifiedDate" formControlName="lastModifiedDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
+                    <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                           formControlName="lastModifiedBy"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.program.sevadar" for="field_sevadar">Sevadar</label>
+                    <select class="form-control" id="field_sevadar" name="sevadar" formControlName="sevadar">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="sevadarOption.id === editForm.get('sevadar')!.value?.id ? editForm.get('sevadar')!.value : sevadarOption" *ngFor="let sevadarOption of sevadars; trackBy: trackById">{{ sevadarOption.name }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

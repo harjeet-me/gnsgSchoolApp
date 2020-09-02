@@ -5,30 +5,26 @@ import com.gnsg.app.domain.Student;
 import com.gnsg.app.repository.StudentRepository;
 import com.gnsg.app.repository.search.StudentSearchRepository;
 import com.gnsg.app.service.StudentService;
-import com.gnsg.app.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.Validator;
-
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.gnsg.app.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 import static org.hamcrest.Matchers.hasItem;
@@ -40,6 +36,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Integration tests for the {@link StudentResource} REST controller.
  */
 @SpringBootTest(classes = GnsgSchoolApp.class)
+@ExtendWith(MockitoExtension.class)
+@AutoConfigureMockMvc
+@WithMockUser
 public class StudentResourceIT {
 
     private static final String DEFAULT_FULL_NAME = "AAAAAAAAAA";
@@ -50,15 +49,6 @@ public class StudentResourceIT {
 
     private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
     private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
-
-    private static final String DEFAULT_CITY = "AAAAAAAAAA";
-    private static final String UPDATED_CITY = "BBBBBBBBBB";
-
-    private static final String DEFAULT_STATE_PROVINCE = "AAAAAAAAAA";
-    private static final String UPDATED_STATE_PROVINCE = "BBBBBBBBBB";
-
-    private static final String DEFAULT_POSTAL_CODE = "AAAAAAAAAA";
-    private static final String UPDATED_POSTAL_CODE = "BBBBBBBBBB";
 
     private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
     private static final String UPDATED_EMAIL = "BBBBBBBBBB";
@@ -93,35 +83,12 @@ public class StudentResourceIT {
     private StudentSearchRepository mockStudentSearchRepository;
 
     @Autowired
-    private MappingJackson2HttpMessageConverter jacksonMessageConverter;
-
-    @Autowired
-    private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
-
-    @Autowired
-    private ExceptionTranslator exceptionTranslator;
-
-    @Autowired
     private EntityManager em;
 
     @Autowired
-    private Validator validator;
-
     private MockMvc restStudentMockMvc;
 
     private Student student;
-
-    @BeforeEach
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
-        final StudentResource studentResource = new StudentResource(studentService);
-        this.restStudentMockMvc = MockMvcBuilders.standaloneSetup(studentResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter)
-            .setValidator(validator).build();
-    }
 
     /**
      * Create an entity for this test.
@@ -134,9 +101,6 @@ public class StudentResourceIT {
             .fullName(DEFAULT_FULL_NAME)
             .parentName(DEFAULT_PARENT_NAME)
             .address(DEFAULT_ADDRESS)
-            .city(DEFAULT_CITY)
-            .stateProvince(DEFAULT_STATE_PROVINCE)
-            .postalCode(DEFAULT_POSTAL_CODE)
             .email(DEFAULT_EMAIL)
             .phoneNumber(DEFAULT_PHONE_NUMBER)
             .teacherName(DEFAULT_TEACHER_NAME)
@@ -154,9 +118,6 @@ public class StudentResourceIT {
             .fullName(UPDATED_FULL_NAME)
             .parentName(UPDATED_PARENT_NAME)
             .address(UPDATED_ADDRESS)
-            .city(UPDATED_CITY)
-            .stateProvince(UPDATED_STATE_PROVINCE)
-            .postalCode(UPDATED_POSTAL_CODE)
             .email(UPDATED_EMAIL)
             .phoneNumber(UPDATED_PHONE_NUMBER)
             .teacherName(UPDATED_TEACHER_NAME)
@@ -173,10 +134,9 @@ public class StudentResourceIT {
     @Transactional
     public void createStudent() throws Exception {
         int databaseSizeBeforeCreate = studentRepository.findAll().size();
-
         // Create the Student
         restStudentMockMvc.perform(post("/api/students")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(MediaType.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(student)))
             .andExpect(status().isCreated());
 
@@ -187,9 +147,6 @@ public class StudentResourceIT {
         assertThat(testStudent.getFullName()).isEqualTo(DEFAULT_FULL_NAME);
         assertThat(testStudent.getParentName()).isEqualTo(DEFAULT_PARENT_NAME);
         assertThat(testStudent.getAddress()).isEqualTo(DEFAULT_ADDRESS);
-        assertThat(testStudent.getCity()).isEqualTo(DEFAULT_CITY);
-        assertThat(testStudent.getStateProvince()).isEqualTo(DEFAULT_STATE_PROVINCE);
-        assertThat(testStudent.getPostalCode()).isEqualTo(DEFAULT_POSTAL_CODE);
         assertThat(testStudent.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testStudent.getPhoneNumber()).isEqualTo(DEFAULT_PHONE_NUMBER);
         assertThat(testStudent.getTeacherName()).isEqualTo(DEFAULT_TEACHER_NAME);
@@ -209,7 +166,7 @@ public class StudentResourceIT {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restStudentMockMvc.perform(post("/api/students")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(MediaType.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(student)))
             .andExpect(status().isBadRequest());
 
@@ -236,9 +193,6 @@ public class StudentResourceIT {
             .andExpect(jsonPath("$.[*].fullName").value(hasItem(DEFAULT_FULL_NAME)))
             .andExpect(jsonPath("$.[*].parentName").value(hasItem(DEFAULT_PARENT_NAME)))
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS)))
-            .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY)))
-            .andExpect(jsonPath("$.[*].stateProvince").value(hasItem(DEFAULT_STATE_PROVINCE)))
-            .andExpect(jsonPath("$.[*].postalCode").value(hasItem(DEFAULT_POSTAL_CODE)))
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)))
             .andExpect(jsonPath("$.[*].phoneNumber").value(hasItem(DEFAULT_PHONE_NUMBER.intValue())))
             .andExpect(jsonPath("$.[*].teacherName").value(hasItem(DEFAULT_TEACHER_NAME)))
@@ -247,35 +201,22 @@ public class StudentResourceIT {
     
     @SuppressWarnings({"unchecked"})
     public void getAllStudentsWithEagerRelationshipsIsEnabled() throws Exception {
-        StudentResource studentResource = new StudentResource(studentServiceMock);
         when(studentServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
 
-        MockMvc restStudentMockMvc = MockMvcBuilders.standaloneSetup(studentResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
         restStudentMockMvc.perform(get("/api/students?eagerload=true"))
-        .andExpect(status().isOk());
+            .andExpect(status().isOk());
 
         verify(studentServiceMock, times(1)).findAllWithEagerRelationships(any());
     }
 
     @SuppressWarnings({"unchecked"})
     public void getAllStudentsWithEagerRelationshipsIsNotEnabled() throws Exception {
-        StudentResource studentResource = new StudentResource(studentServiceMock);
-            when(studentServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-            MockMvc restStudentMockMvc = MockMvcBuilders.standaloneSetup(studentResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
+        when(studentServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
 
         restStudentMockMvc.perform(get("/api/students?eagerload=true"))
-        .andExpect(status().isOk());
+            .andExpect(status().isOk());
 
-            verify(studentServiceMock, times(1)).findAllWithEagerRelationships(any());
+        verify(studentServiceMock, times(1)).findAllWithEagerRelationships(any());
     }
 
     @Test
@@ -292,15 +233,11 @@ public class StudentResourceIT {
             .andExpect(jsonPath("$.fullName").value(DEFAULT_FULL_NAME))
             .andExpect(jsonPath("$.parentName").value(DEFAULT_PARENT_NAME))
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS))
-            .andExpect(jsonPath("$.city").value(DEFAULT_CITY))
-            .andExpect(jsonPath("$.stateProvince").value(DEFAULT_STATE_PROVINCE))
-            .andExpect(jsonPath("$.postalCode").value(DEFAULT_POSTAL_CODE))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL))
             .andExpect(jsonPath("$.phoneNumber").value(DEFAULT_PHONE_NUMBER.intValue()))
             .andExpect(jsonPath("$.teacherName").value(DEFAULT_TEACHER_NAME))
             .andExpect(jsonPath("$.active").value(DEFAULT_ACTIVE.booleanValue()));
     }
-
     @Test
     @Transactional
     public void getNonExistingStudent() throws Exception {
@@ -314,8 +251,6 @@ public class StudentResourceIT {
     public void updateStudent() throws Exception {
         // Initialize the database
         studentService.save(student);
-        // As the test used the service layer, reset the Elasticsearch mock repository
-        reset(mockStudentSearchRepository);
 
         int databaseSizeBeforeUpdate = studentRepository.findAll().size();
 
@@ -327,16 +262,13 @@ public class StudentResourceIT {
             .fullName(UPDATED_FULL_NAME)
             .parentName(UPDATED_PARENT_NAME)
             .address(UPDATED_ADDRESS)
-            .city(UPDATED_CITY)
-            .stateProvince(UPDATED_STATE_PROVINCE)
-            .postalCode(UPDATED_POSTAL_CODE)
             .email(UPDATED_EMAIL)
             .phoneNumber(UPDATED_PHONE_NUMBER)
             .teacherName(UPDATED_TEACHER_NAME)
             .active(UPDATED_ACTIVE);
 
         restStudentMockMvc.perform(put("/api/students")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(MediaType.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(updatedStudent)))
             .andExpect(status().isOk());
 
@@ -347,16 +279,13 @@ public class StudentResourceIT {
         assertThat(testStudent.getFullName()).isEqualTo(UPDATED_FULL_NAME);
         assertThat(testStudent.getParentName()).isEqualTo(UPDATED_PARENT_NAME);
         assertThat(testStudent.getAddress()).isEqualTo(UPDATED_ADDRESS);
-        assertThat(testStudent.getCity()).isEqualTo(UPDATED_CITY);
-        assertThat(testStudent.getStateProvince()).isEqualTo(UPDATED_STATE_PROVINCE);
-        assertThat(testStudent.getPostalCode()).isEqualTo(UPDATED_POSTAL_CODE);
         assertThat(testStudent.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testStudent.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
         assertThat(testStudent.getTeacherName()).isEqualTo(UPDATED_TEACHER_NAME);
         assertThat(testStudent.isActive()).isEqualTo(UPDATED_ACTIVE);
 
         // Validate the Student in Elasticsearch
-        verify(mockStudentSearchRepository, times(1)).save(testStudent);
+        verify(mockStudentSearchRepository, times(2)).save(testStudent);
     }
 
     @Test
@@ -364,11 +293,9 @@ public class StudentResourceIT {
     public void updateNonExistingStudent() throws Exception {
         int databaseSizeBeforeUpdate = studentRepository.findAll().size();
 
-        // Create the Student
-
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restStudentMockMvc.perform(put("/api/students")
-            .contentType(TestUtil.APPLICATION_JSON)
+            .contentType(MediaType.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(student)))
             .andExpect(status().isBadRequest());
 
@@ -390,7 +317,7 @@ public class StudentResourceIT {
 
         // Delete the student
         restStudentMockMvc.perform(delete("/api/students/{id}", student.getId())
-            .accept(TestUtil.APPLICATION_JSON))
+            .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item
@@ -404,10 +331,12 @@ public class StudentResourceIT {
     @Test
     @Transactional
     public void searchStudent() throws Exception {
+        // Configure the mock search repository
         // Initialize the database
         studentService.save(student);
         when(mockStudentSearchRepository.search(queryStringQuery("id:" + student.getId()), PageRequest.of(0, 20)))
             .thenReturn(new PageImpl<>(Collections.singletonList(student), PageRequest.of(0, 1), 1));
+
         // Search the student
         restStudentMockMvc.perform(get("/api/_search/students?query=id:" + student.getId()))
             .andExpect(status().isOk())
@@ -416,9 +345,6 @@ public class StudentResourceIT {
             .andExpect(jsonPath("$.[*].fullName").value(hasItem(DEFAULT_FULL_NAME)))
             .andExpect(jsonPath("$.[*].parentName").value(hasItem(DEFAULT_PARENT_NAME)))
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS)))
-            .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY)))
-            .andExpect(jsonPath("$.[*].stateProvince").value(hasItem(DEFAULT_STATE_PROVINCE)))
-            .andExpect(jsonPath("$.[*].postalCode").value(hasItem(DEFAULT_POSTAL_CODE)))
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)))
             .andExpect(jsonPath("$.[*].phoneNumber").value(hasItem(DEFAULT_PHONE_NUMBER.intValue())))
             .andExpect(jsonPath("$.[*].teacherName").value(hasItem(DEFAULT_TEACHER_NAME)))

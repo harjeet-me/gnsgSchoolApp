@@ -5,6 +5,7 @@ import { JhiResolvePagingParams } from 'ng-jhipster';
 import { Observable, of, EMPTY } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
+import { Authority } from 'app/shared/constants/authority.constants';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { IStudent, Student } from 'app/shared/model/student.model';
 import { StudentService } from './student.service';
@@ -39,49 +40,49 @@ export const studentRoute: Routes = [
     path: '',
     component: StudentComponent,
     resolve: {
-      pagingParams: JhiResolvePagingParams
+      pagingParams: JhiResolvePagingParams,
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: [Authority.USER],
       defaultSort: 'id,asc',
-      pageTitle: 'gnsgSchoolApp.student.home.title'
+      pageTitle: 'gnsgSchoolApp.student.home.title',
     },
-    canActivate: [UserRouteAccessService]
+    canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
     component: StudentDetailComponent,
     resolve: {
-      student: StudentResolve
+      student: StudentResolve,
     },
     data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'gnsgSchoolApp.student.home.title'
+      authorities: [Authority.USER],
+      pageTitle: 'gnsgSchoolApp.student.home.title',
     },
-    canActivate: [UserRouteAccessService]
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'new',
     component: StudentUpdateComponent,
     resolve: {
-      student: StudentResolve
+      student: StudentResolve,
     },
     data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'gnsgSchoolApp.student.home.title'
+      authorities: [Authority.USER],
+      pageTitle: 'gnsgSchoolApp.student.home.title',
     },
-    canActivate: [UserRouteAccessService]
+    canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/edit',
     component: StudentUpdateComponent,
     resolve: {
-      student: StudentResolve
+      student: StudentResolve,
     },
     data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'gnsgSchoolApp.student.home.title'
+      authorities: [Authority.USER],
+      pageTitle: 'gnsgSchoolApp.student.home.title',
     },
-    canActivate: [UserRouteAccessService]
-  }
+    canActivate: [UserRouteAccessService],
+  },
 ];

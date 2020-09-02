@@ -128,6 +128,7 @@ public class StudentResource {
     @DeleteMapping("/students/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
         log.debug("REST request to delete Student : {}", id);
+
         studentService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
@@ -146,5 +147,5 @@ public class StudentResource {
         Page<Student> page = studentService.search(query, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
+        }
 }

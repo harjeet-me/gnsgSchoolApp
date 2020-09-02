@@ -16,7 +16,7 @@ describe('Component Tests', () => {
       TestBed.configureTestingModule({
         imports: [GnsgSchoolAppTestModule],
         declarations: [AppliedChargeDetailComponent],
-        providers: [{ provide: ActivatedRoute, useValue: route }]
+        providers: [{ provide: ActivatedRoute, useValue: route }],
       })
         .overrideTemplate(AppliedChargeDetailComponent, '')
         .compileComponents();

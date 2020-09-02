@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sevadar">
+            <h2><span jhiTranslate="gnsgSchoolApp.sevadar.detail.title">Sevadar</span> {{ sevadar.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gnsgSchoolApp.sevadar.name" [ngbTooltip]="'gnsgSchoolApp.sevadar.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{ sevadar.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.sevadar.email">Email</span></dt>
+                <dd>
+                    <span>{{ sevadar.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.sevadar.phoneNumber">Phone Number</span></dt>
+                <dd>
+                    <span>{{ sevadar.phoneNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.sevadar.address">Address</span></dt>
+                <dd>
+                    <span>{{ sevadar.address }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.sevadar.sevaStartDate">Seva Start Date</span></dt>
+                <dd>
+                    <span>{{ sevadar.sevaStartDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.sevadar.sevaEndDate">Seva End Date</span></dt>
+                <dd>
+                    <span>{{ sevadar.sevaEndDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.sevadar.isValid">Is Valid</span></dt>
+                <dd>
+                    <span>{{ sevadar.isValid }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.sevadar.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{ sevadar.createdDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.sevadar.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{ sevadar.createdBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.sevadar.lastModifiedDate">Last Modified Date</span></dt>
+                <dd>
+                    <span>{{ sevadar.lastModifiedDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.sevadar.lastModifiedBy">Last Modified By</span></dt>
+                <dd>
+                    <span>{{ sevadar.lastModifiedBy }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/sevadar', sevadar.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

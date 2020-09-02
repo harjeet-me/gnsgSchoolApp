@@ -10,7 +10,7 @@ import { AppliedChargeService } from './applied-charge.service';
 
 @Component({
   selector: 'jhi-applied-charge-update',
-  templateUrl: './applied-charge-update.component.html'
+  templateUrl: './applied-charge-update.component.html',
 })
 export class AppliedChargeUpdateComponent implements OnInit {
   isSaving = false;
@@ -19,7 +19,7 @@ export class AppliedChargeUpdateComponent implements OnInit {
     id: [],
     type: [],
     ammount: [],
-    dueInterval: []
+    dueInterval: [],
   });
 
   constructor(protected appliedChargeService: AppliedChargeService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -35,7 +35,7 @@ export class AppliedChargeUpdateComponent implements OnInit {
       id: appliedCharge.id,
       type: appliedCharge.type,
       ammount: appliedCharge.ammount,
-      dueInterval: appliedCharge.dueInterval
+      dueInterval: appliedCharge.dueInterval,
     });
   }
 
@@ -59,7 +59,7 @@ export class AppliedChargeUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       type: this.editForm.get(['type'])!.value,
       ammount: this.editForm.get(['ammount'])!.value,
-      dueInterval: this.editForm.get(['dueInterval'])!.value
+      dueInterval: this.editForm.get(['dueInterval'])!.value,
     };
   }
 

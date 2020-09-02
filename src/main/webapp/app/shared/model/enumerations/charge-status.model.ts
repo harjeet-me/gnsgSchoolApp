@@ -1,4 +1,7 @@
 export const enum ChargeStatus {
-  DUE,
-  PAID
+  DUE = 'DUE',
+
+  PAID = 'PAID',
+
+  WAVED = 'WAVED',
 }
