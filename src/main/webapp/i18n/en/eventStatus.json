@@ -1,0 +1,12 @@
+{
+  "gnsgSchoolApp": {
+    "EventStatus": {
+      "null": "",
+      "BOOKED": "BOOKED",
+      "COMPLETED": "COMPLETED",
+      "CANCELLED": "CANCELLED",
+      "REQUESTED": "REQUESTED",
+      "PAID": "PAID"
+    }
+  }
+}

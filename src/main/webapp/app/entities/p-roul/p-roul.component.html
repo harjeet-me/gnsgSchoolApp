@@ -1,0 +1,113 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gnsgSchoolApp.pRoul.home.title">P Rouls</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-p-roul" [routerLink]="['/p-roul/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="gnsgSchoolApp.pRoul.home.createLabel">
+            Create a new P Roul
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'gnsgSchoolApp.pRoul.home.search' | translate }}">
+
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon icon="search"></fa-icon>
+                    </button>
+
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon icon="trash-alt"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="pRouls?.length === 0">
+        <span jhiTranslate="gnsgSchoolApp.pRoul.home.notFound">No pRouls found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="pRouls && pRouls.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="name"><span jhiTranslate="gnsgSchoolApp.pRoul.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="desc"><span jhiTranslate="gnsgSchoolApp.pRoul.desc">Desc</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totalRoul"><span jhiTranslate="gnsgSchoolApp.pRoul.totalRoul">Total Roul</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdDate"><span jhiTranslate="gnsgSchoolApp.pRoul.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdBy"><span jhiTranslate="gnsgSchoolApp.pRoul.createdBy">Created By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastModifiedDate"><span jhiTranslate="gnsgSchoolApp.pRoul.lastModifiedDate">Last Modified Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastModifiedBy"><span jhiTranslate="gnsgSchoolApp.pRoul.lastModifiedBy">Last Modified By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="pathi.name"><span jhiTranslate="gnsgSchoolApp.pRoul.pathi">Pathi</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="sehajPath.desc"><span jhiTranslate="gnsgSchoolApp.pRoul.sehajPath">Sehaj Path</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pRoul of pRouls ;trackBy: trackId">
+                    <td><a [routerLink]="['/p-roul', pRoul.id, 'view']">{{ pRoul.id }}</a></td>
+                    <td>{{ pRoul.name }}</td>
+                    <td>{{ pRoul.desc }}</td>
+                    <td>{{ pRoul.totalRoul }}</td>
+                    <td>{{ pRoul.createdDate | date:'medium' }}</td>
+                    <td>{{ pRoul.createdBy }}</td>
+                    <td>{{ pRoul.lastModifiedDate | date:'medium' }}</td>
+                    <td>{{ pRoul.lastModifiedBy }}</td>
+                    <td>
+                        <div *ngIf="pRoul.pathi">
+                            <a [routerLink]="['/sevadar', pRoul.pathi?.id, 'view']" >{{ pRoul.pathi?.name }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="pRoul.sehajPath">
+                            <a [routerLink]="['/as-path', pRoul.sehajPath?.id, 'view']" >{{ pRoul.sehajPath?.desc }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/p-roul', pRoul.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/p-roul', pRoul.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(pRoul)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="pRouls && pRouls.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

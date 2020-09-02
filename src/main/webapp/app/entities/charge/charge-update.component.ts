@@ -12,7 +12,7 @@ import { StudentService } from 'app/entities/student/student.service';
 
 @Component({
   selector: 'jhi-charge-update',
-  templateUrl: './charge-update.component.html'
+  templateUrl: './charge-update.component.html',
 })
 export class ChargeUpdateComponent implements OnInit {
   isSaving = false;
@@ -30,7 +30,7 @@ export class ChargeUpdateComponent implements OnInit {
     amtPaid: [],
     status: [],
     ref: [],
-    student: []
+    student: [],
   });
 
   constructor(
@@ -59,7 +59,7 @@ export class ChargeUpdateComponent implements OnInit {
       amtPaid: charge.amtPaid,
       status: charge.status,
       ref: charge.ref,
-      student: charge.student
+      student: charge.student,
     });
   }
 
@@ -89,7 +89,7 @@ export class ChargeUpdateComponent implements OnInit {
       amtPaid: this.editForm.get(['amtPaid'])!.value,
       status: this.editForm.get(['status'])!.value,
       ref: this.editForm.get(['ref'])!.value,
-      student: this.editForm.get(['student'])!.value
+      student: this.editForm.get(['student'])!.value,
     };
   }
 

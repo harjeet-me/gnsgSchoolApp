@@ -1,71 +1,60 @@
 {
-    "name": "Student",
-    "fields": [
-        {
-            "fieldName": "fullName",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "parentName",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "address",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "city",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "stateProvince",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "postalCode",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "email",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "phoneNumber",
-            "fieldType": "Long"
-        },
-        {
-            "fieldName": "teacherName",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "active",
-            "fieldType": "Boolean"
-        }
-    ],
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "charge",
-            "otherEntityRelationshipName": "student",
-            "relationshipName": "charge"
-        },
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityName": "appliedCharge",
-            "otherEntityRelationshipName": "student",
-            "relationshipName": "appliedCharge",
-            "otherEntityField": "type",
-            "ownerSide": true
-        }
-    ],
-    "changelogDate": "20200227235900",
-    "entityTableName": "student",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": "*"
+  "name": "Student",
+  "fields": [
+    {
+      "fieldName": "fullName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "parentName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "teacherName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "charge",
+      "otherEntityRelationshipName": "student",
+      "relationshipName": "charge"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "appliedCharge",
+      "otherEntityRelationshipName": "student",
+      "relationshipName": "appliedCharge",
+      "otherEntityField": "type",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200227235900",
+  "entityTableName": "student",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "embedded": false
 }

@@ -17,8 +17,17 @@
     <include file="config/liquibase/changelog/20200227235900_added_entity_Student.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200228000000_added_entity_Charge.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200228000100_added_entity_AppliedCharge.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200902052423_added_entity_Program.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200902052523_added_entity_ASPath.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200902052623_added_entity_Expense.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200902052723_added_entity_Revenue.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200902052823_added_entity_Task.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200902052923_added_entity_Sevadar.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200902053023_added_entity_PRoul.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20200227235900_added_entity_constraints_Student.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200228000000_added_entity_constraints_Charge.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200902052423_added_entity_constraints_Program.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200902053023_added_entity_constraints_PRoul.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

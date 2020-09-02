@@ -11,6 +11,6 @@ import { chargeRoute } from './charge.route';
 @NgModule({
   imports: [GnsgSchoolAppSharedModule, RouterModule.forChild(chargeRoute)],
   declarations: [ChargeComponent, ChargeDetailComponent, ChargeUpdateComponent, ChargeDeleteDialogComponent],
-  entryComponents: [ChargeDeleteDialogComponent]
+  entryComponents: [ChargeDeleteDialogComponent],
 })
 export class GnsgSchoolAppChargeModule {}

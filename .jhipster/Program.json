@@ -1,0 +1,110 @@
+{
+  "name": "Program",
+  "fields": [
+    {
+      "fieldName": "programType",
+      "fieldType": "EVENTTYPE",
+      "fieldValues": "SUKHMANI_SAHIB,SUKHMANI_SAHIB_AT_HOME,FUNERAL_SEHAJ_PATH_BHOG,AKHAND_PATH_SAHIB,SEHAJ_PATH_START,LANGAR,KIRTAN,SEHAJ_PATH_BHOG,DEG_SEVA"
+    },
+    {
+      "fieldName": "location",
+      "fieldType": "EVENTLOCATION",
+      "fieldValues": "HALL_2,HALL_3,GALLERY_UPSTAIRS,MAIN_HALL,HOME,GNSG_SENIOR_CENTER"
+    },
+    {
+      "fieldName": "etime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "family",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "withLangar",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "langarMenu",
+      "fieldType": "LANGARMENU",
+      "fieldValues": "SIMPLE_JALEBI_SHAHIPANEER,SIMPLE_JALEBI_MATARPANEER,SIMPLE_KHEER_SHAHIPANEER,SIMPLE_KHEER_MATARPANEER,SIMPLE_JALEBI_PALAKPANEER,SIMPLE_KHEER_PALAKPANEER,PAKOURE,JALEBI,KHEER"
+    },
+    {
+      "fieldName": "langarTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dueAmt",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "paidAmt",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "balAmt",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "recieptNumber",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "remark",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bookingDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "EventStatus",
+      "fieldValues": "BOOKED,COMPLETED,CANCELLED,REQUESTED,PAID"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sevadar",
+      "otherEntityRelationshipName": "program",
+      "relationshipName": "sevadar",
+      "otherEntityField": "name"
+    }
+  ],
+  "changelogDate": "20200902052423",
+  "javadoc": "not an ignored comment",
+  "entityTableName": "program",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

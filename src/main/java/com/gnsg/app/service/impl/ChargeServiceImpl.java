@@ -61,6 +61,7 @@ public class ChargeServiceImpl implements ChargeService {
         return chargeRepository.findAll();
     }
 
+
     /**
      * Get one charge by id.
      *
@@ -82,6 +83,7 @@ public class ChargeServiceImpl implements ChargeService {
     @Override
     public void delete(Long id) {
         log.debug("Request to delete Charge : {}", id);
+
         chargeRepository.deleteById(id);
         chargeSearchRepository.deleteById(id);
     }
@@ -98,6 +100,6 @@ public class ChargeServiceImpl implements ChargeService {
         log.debug("Request to search Charges for query {}", query);
         return StreamSupport
             .stream(chargeSearchRepository.search(queryStringQuery(query)).spliterator(), false)
-            .collect(Collectors.toList());
+        .collect(Collectors.toList());
     }
 }

@@ -113,6 +113,7 @@ public class ChargeResource {
     @DeleteMapping("/charges/{id}")
     public ResponseEntity<Void> deleteCharge(@PathVariable Long id) {
         log.debug("REST request to delete Charge : {}", id);
+
         chargeService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }

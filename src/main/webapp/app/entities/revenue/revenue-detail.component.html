@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="revenue">
+            <h2><span jhiTranslate="gnsgSchoolApp.revenue.detail.title">Revenue</span> {{ revenue.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gnsgSchoolApp.revenue.revType">Rev Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'gnsgSchoolApp.REVTYPE.' + revenue.revType }}">{{ revenue.revType }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.revenue.amt">Amt</span></dt>
+                <dd>
+                    <span>{{ revenue.amt }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.revenue.date">Date</span></dt>
+                <dd>
+                    <span>{{ revenue.date }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.revenue.desc">Desc</span></dt>
+                <dd>
+                    <span>{{ revenue.desc }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.revenue.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{ revenue.createdDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.revenue.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{ revenue.createdBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.revenue.lastModifiedDate">Last Modified Date</span></dt>
+                <dd>
+                    <span>{{ revenue.lastModifiedDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.revenue.lastModifiedBy">Last Modified By</span></dt>
+                <dd>
+                    <span>{{ revenue.lastModifiedBy }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/revenue', revenue.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

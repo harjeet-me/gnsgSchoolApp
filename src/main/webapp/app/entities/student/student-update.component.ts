@@ -12,7 +12,7 @@ import { AppliedChargeService } from 'app/entities/applied-charge/applied-charge
 
 @Component({
   selector: 'jhi-student-update',
-  templateUrl: './student-update.component.html'
+  templateUrl: './student-update.component.html',
 })
 export class StudentUpdateComponent implements OnInit {
   isSaving = false;
@@ -23,14 +23,11 @@ export class StudentUpdateComponent implements OnInit {
     fullName: [],
     parentName: [],
     address: [],
-    city: [],
-    stateProvince: [],
-    postalCode: [],
     email: [],
     phoneNumber: [],
     teacherName: [],
     active: [],
-    appliedCharges: []
+    appliedCharges: [],
   });
 
   constructor(
@@ -54,14 +51,11 @@ export class StudentUpdateComponent implements OnInit {
       fullName: student.fullName,
       parentName: student.parentName,
       address: student.address,
-      city: student.city,
-      stateProvince: student.stateProvince,
-      postalCode: student.postalCode,
       email: student.email,
       phoneNumber: student.phoneNumber,
       teacherName: student.teacherName,
       active: student.active,
-      appliedCharges: student.appliedCharges
+      appliedCharges: student.appliedCharges,
     });
   }
 
@@ -86,14 +80,11 @@ export class StudentUpdateComponent implements OnInit {
       fullName: this.editForm.get(['fullName'])!.value,
       parentName: this.editForm.get(['parentName'])!.value,
       address: this.editForm.get(['address'])!.value,
-      city: this.editForm.get(['city'])!.value,
-      stateProvince: this.editForm.get(['stateProvince'])!.value,
-      postalCode: this.editForm.get(['postalCode'])!.value,
       email: this.editForm.get(['email'])!.value,
       phoneNumber: this.editForm.get(['phoneNumber'])!.value,
       teacherName: this.editForm.get(['teacherName'])!.value,
       active: this.editForm.get(['active'])!.value,
-      appliedCharges: this.editForm.get(['appliedCharges'])!.value
+      appliedCharges: this.editForm.get(['appliedCharges'])!.value,
     };
   }
 

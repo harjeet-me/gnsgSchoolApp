@@ -16,7 +16,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "applied_charge")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "appliedcharge")
 public class AppliedCharge implements Serializable {
 
@@ -36,11 +36,11 @@ public class AppliedCharge implements Serializable {
     private Integer dueInterval;
 
     @ManyToMany(mappedBy = "appliedCharges")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnore
     private Set<Student> students = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
     }
@@ -112,7 +112,7 @@ public class AppliedCharge implements Serializable {
     public void setStudents(Set<Student> students) {
         this.students = students;
     }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
     public boolean equals(Object o) {
@@ -130,6 +130,7 @@ public class AppliedCharge implements Serializable {
         return 31;
     }
 
+    // prettier-ignore
     @Override
     public String toString() {
         return "AppliedCharge{" +

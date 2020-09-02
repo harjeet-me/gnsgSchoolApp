@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pRoul">
+            <h2><span jhiTranslate="gnsgSchoolApp.pRoul.detail.title">P Roul</span> {{ pRoul.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gnsgSchoolApp.pRoul.name" [ngbTooltip]="'gnsgSchoolApp.pRoul.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{ pRoul.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.pRoul.desc">Desc</span></dt>
+                <dd>
+                    <span>{{ pRoul.desc }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.pRoul.totalRoul">Total Roul</span></dt>
+                <dd>
+                    <span>{{ pRoul.totalRoul }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.pRoul.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{ pRoul.createdDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.pRoul.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{ pRoul.createdBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.pRoul.lastModifiedDate">Last Modified Date</span></dt>
+                <dd>
+                    <span>{{ pRoul.lastModifiedDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.pRoul.lastModifiedBy">Last Modified By</span></dt>
+                <dd>
+                    <span>{{ pRoul.lastModifiedBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.pRoul.pathi">Pathi</span></dt>
+                <dd>
+                    <div *ngIf="pRoul.pathi">
+                        <a [routerLink]="['/sevadar', pRoul.pathi?.id, 'view']">{{ pRoul.pathi?.name }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.pRoul.sehajPath">Sehaj Path</span></dt>
+                <dd>
+                    <div *ngIf="pRoul.sehajPath">
+                        <a [routerLink]="['/as-path', pRoul.sehajPath?.id, 'view']">{{ pRoul.sehajPath?.desc }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/p-roul', pRoul.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

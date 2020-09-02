@@ -1,0 +1,37 @@
+{
+  "gnsgSchoolApp": {
+    "aSPath": {
+      "home": {
+        "title": "AS Paths",
+        "createLabel": "Create a new AS Path",
+        "createOrEditLabel": "Create or edit a AS Path",
+        "search": "Search for AS Path",
+        "notFound": "No AS Paths found"
+      },
+      "created": "A new AS Path is created with identifier {{ param }}",
+      "updated": "A AS Path is updated with identifier {{ param }}",
+      "deleted": "A AS Path is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete AS Path {{ id }}?"
+      },
+      "detail": {
+        "title": "AS Path"
+      },
+      "program": "Program",
+      "family": "Family",
+      "phoneNumber": "Phone Number",
+      "address": "Address",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "remark": "Remark",
+      "bookingDate": "Booking Date",
+      "desc": "Desc",
+      "status": "Status",
+      "createdDate": "Created Date",
+      "createdBy": "Created By",
+      "lastModifiedDate": "Last Modified Date",
+      "lastModifiedBy": "Last Modified By",
+      "pRoul": "P Roul"
+    }
+  }
+}

@@ -20,7 +20,7 @@ describe('Component Tests', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [GnsgSchoolAppTestModule],
-        declarations: [AppliedChargeDeleteDialogComponent]
+        declarations: [AppliedChargeDeleteDialogComponent],
       })
         .overrideTemplate(AppliedChargeDeleteDialogComponent, '')
         .compileComponents();

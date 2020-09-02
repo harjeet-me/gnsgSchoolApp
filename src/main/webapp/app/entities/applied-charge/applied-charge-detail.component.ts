@@ -5,7 +5,7 @@ import { IAppliedCharge } from 'app/shared/model/applied-charge.model';
 
 @Component({
   selector: 'jhi-applied-charge-detail',
-  templateUrl: './applied-charge-detail.component.html'
+  templateUrl: './applied-charge-detail.component.html',
 })
 export class AppliedChargeDetailComponent implements OnInit {
   appliedCharge: IAppliedCharge | null = null;

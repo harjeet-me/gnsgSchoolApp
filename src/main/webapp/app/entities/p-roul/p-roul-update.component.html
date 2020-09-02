@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-p-roul-heading" jhiTranslate="gnsgSchoolApp.pRoul.home.createOrEditLabel">Create or edit a P Roul</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.pRoul.name" for="field_name" [ngbTooltip]="'gnsgSchoolApp.pRoul.help.name' | translate">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.pRoul.desc" for="field_desc">Desc</label>
+                    <input type="text" class="form-control" name="desc" id="field_desc"
+                           formControlName="desc"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.pRoul.totalRoul" for="field_totalRoul">Total Roul</label>
+                    <input type="text" class="form-control" name="totalRoul" id="field_totalRoul"
+                           formControlName="totalRoul"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.pRoul.createdDate" for="field_createdDate">Created Date</label>
+                    <div class="d-flex">
+                        <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" formControlName="createdDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.pRoul.createdBy" for="field_createdBy">Created By</label>
+                    <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                           formControlName="createdBy"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.pRoul.lastModifiedDate" for="field_lastModifiedDate">Last Modified Date</label>
+                    <div class="d-flex">
+                        <input id="field_lastModifiedDate" type="datetime-local" class="form-control" name="lastModifiedDate" formControlName="lastModifiedDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.pRoul.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
+                    <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                           formControlName="lastModifiedBy"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.pRoul.pathi" for="field_pathi">Pathi</label>
+                    <select class="form-control" id="field_pathi" name="pathi" formControlName="pathi">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="sevadarOption.id === editForm.get('pathi')!.value?.id ? editForm.get('pathi')!.value : sevadarOption" *ngFor="let sevadarOption of pathis; trackBy: trackById">{{ sevadarOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gnsgSchoolApp.pRoul.sehajPath" for="field_sehajPath">Sehaj Path</label>
+                    <select class="form-control" id="field_sehajPath" name="sehajPath" formControlName="sehajPath">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="aSPathOption.id === editForm.get('sehajPath')!.value?.id ? editForm.get('sehajPath')!.value : aSPathOption" *ngFor="let aSPathOption of aspaths; trackBy: trackById">{{ aSPathOption.desc }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -11,7 +11,7 @@ import { AppliedChargeDeleteDialogComponent } from './applied-charge-delete-dial
 
 @Component({
   selector: 'jhi-applied-charge',
-  templateUrl: './applied-charge.component.html'
+  templateUrl: './applied-charge.component.html',
 })
 export class AppliedChargeComponent implements OnInit, OnDestroy {
   appliedCharges?: IAppliedCharge[];
@@ -34,7 +34,7 @@ export class AppliedChargeComponent implements OnInit, OnDestroy {
     if (this.currentSearch) {
       this.appliedChargeService
         .search({
-          query: this.currentSearch
+          query: this.currentSearch,
         })
         .subscribe((res: HttpResponse<IAppliedCharge[]>) => (this.appliedCharges = res.body || []));
       return;

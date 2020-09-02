@@ -35,6 +35,7 @@ public interface StudentService {
      */
     Page<Student> findAllWithEagerRelationships(Pageable pageable);
 
+
     /**
      * Get the "id" student.
      *

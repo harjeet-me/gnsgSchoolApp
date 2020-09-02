@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity PRoul.
+    -->
+    <changeSet id="20200902053023-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="pathi_id"
+                                 baseTableName="p_roul"
+                                 constraintName="fk_p_roul_pathi_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sevadar"/>
+
+        <addForeignKeyConstraint baseColumnNames="sehaj_path_id"
+                                 baseTableName="p_roul"
+                                 constraintName="fk_p_roul_sehaj_path_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="as_path"/>
+
+    </changeSet>
+</databaseChangeLog>

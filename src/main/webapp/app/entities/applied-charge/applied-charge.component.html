@@ -36,7 +36,7 @@
         <span jhiTranslate="gnsgSchoolApp.appliedCharge.home.notFound">No appliedCharges found</span>
     </div>
 
-    <div class="table-responsive" id="entities" *ngIf="appliedCharges?.length > 0">
+    <div class="table-responsive" id="entities" *ngIf="appliedCharges && appliedCharges.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr>

@@ -4,6 +4,7 @@ import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router
 import { Observable, of, EMPTY } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
+import { Authority } from 'app/shared/constants/authority.constants';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { ICharge, Charge } from 'app/shared/model/charge.model';
 import { ChargeService } from './charge.service';
@@ -38,45 +39,45 @@ export const chargeRoute: Routes = [
     path: '',
     component: ChargeComponent,
     data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'gnsgSchoolApp.charge.home.title'
+      authorities: [Authority.USER],
+      pageTitle: 'gnsgSchoolApp.charge.home.title',
     },
-    canActivate: [UserRouteAccessService]
+    canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
     component: ChargeDetailComponent,
     resolve: {
-      charge: ChargeResolve
+      charge: ChargeResolve,
     },
     data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'gnsgSchoolApp.charge.home.title'
+      authorities: [Authority.USER],
+      pageTitle: 'gnsgSchoolApp.charge.home.title',
     },
-    canActivate: [UserRouteAccessService]
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'new',
     component: ChargeUpdateComponent,
     resolve: {
-      charge: ChargeResolve
+      charge: ChargeResolve,
     },
     data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'gnsgSchoolApp.charge.home.title'
+      authorities: [Authority.USER],
+      pageTitle: 'gnsgSchoolApp.charge.home.title',
     },
-    canActivate: [UserRouteAccessService]
+    canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/edit',
     component: ChargeUpdateComponent,
     resolve: {
-      charge: ChargeResolve
+      charge: ChargeResolve,
     },
     data: {
-      authorities: ['ROLE_USER'],
-      pageTitle: 'gnsgSchoolApp.charge.home.title'
+      authorities: [Authority.USER],
+      pageTitle: 'gnsgSchoolApp.charge.home.title',
     },
-    canActivate: [UserRouteAccessService]
-  }
+    canActivate: [UserRouteAccessService],
+  },
 ];

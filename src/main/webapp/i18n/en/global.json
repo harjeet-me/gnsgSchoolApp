@@ -10,6 +10,13 @@
         "student": "Student",
         "charge": "Charge",
         "appliedCharge": "Applied Charge",
+        "program": "Program",
+        "asPath": "AS Path",
+        "expense": "Expense",
+        "revenue": "Revenue",
+        "task": "Task",
+        "sevadar": "Sevadar",
+        "pRoul": "P Roul",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

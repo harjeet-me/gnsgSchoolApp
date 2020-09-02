@@ -3,7 +3,7 @@
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
         <property name="autoIncrement" value="true"/>
@@ -25,15 +25,6 @@
             <column name="address" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="city" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="state_province" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="postal_code" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="email" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -46,7 +37,7 @@
             <column name="active" type="boolean">
                 <constraints nullable="true" />
             </column>
-            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>
 
@@ -64,7 +55,7 @@
         <addPrimaryKey columnNames="student_id, applied_charge_id" tableName="student_applied_charge"/>
         
     </changeSet>
-    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 
     <!--
         Load sample data generated with Faker.js
@@ -83,14 +74,11 @@
             <column name="full_name" type="string"/>
             <column name="parent_name" type="string"/>
             <column name="address" type="string"/>
-            <column name="city" type="string"/>
-            <column name="state_province" type="string"/>
-            <column name="postal_code" type="string"/>
             <column name="email" type="string"/>
             <column name="phone_number" type="numeric"/>
             <column name="teacher_name" type="string"/>
             <column name="active" type="boolean"/>
-            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>
 

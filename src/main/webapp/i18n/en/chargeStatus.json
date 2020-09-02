@@ -3,7 +3,8 @@
     "ChargeStatus": {
       "null": "",
       "DUE": "DUE",
-      "PAID": "PAID"
+      "PAID": "PAID",
+      "WAVED": "WAVED"
     }
   }
 }

@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="expense">
+            <h2><span jhiTranslate="gnsgSchoolApp.expense.detail.title">Expense</span> {{ expense.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gnsgSchoolApp.expense.expType">Exp Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'gnsgSchoolApp.EXPTYPE.' + expense.expType }}">{{ expense.expType }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.expense.amt">Amt</span></dt>
+                <dd>
+                    <span>{{ expense.amt }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.expense.date">Date</span></dt>
+                <dd>
+                    <span>{{ expense.date }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.expense.desc">Desc</span></dt>
+                <dd>
+                    <span>{{ expense.desc }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.expense.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{ expense.createdDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.expense.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{ expense.createdBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.expense.lastModifiedDate">Last Modified Date</span></dt>
+                <dd>
+                    <span>{{ expense.lastModifiedDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="gnsgSchoolApp.expense.lastModifiedBy">Last Modified By</span></dt>
+                <dd>
+                    <span>{{ expense.lastModifiedBy }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/expense', expense.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

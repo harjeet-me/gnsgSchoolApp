@@ -1,0 +1,30 @@
+{
+  "gnsgSchoolApp": {
+    "revenue": {
+      "home": {
+        "title": "Revenues",
+        "createLabel": "Create a new Revenue",
+        "createOrEditLabel": "Create or edit a Revenue",
+        "search": "Search for Revenue",
+        "notFound": "No Revenues found"
+      },
+      "created": "A new Revenue is created with identifier {{ param }}",
+      "updated": "A Revenue is updated with identifier {{ param }}",
+      "deleted": "A Revenue is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Revenue {{ id }}?"
+      },
+      "detail": {
+        "title": "Revenue"
+      },
+      "revType": "Rev Type",
+      "amt": "Amt",
+      "date": "Date",
+      "desc": "Desc",
+      "createdDate": "Created Date",
+      "createdBy": "Created By",
+      "lastModifiedDate": "Last Modified Date",
+      "lastModifiedBy": "Last Modified By"
+    }
+  }
+}
